@@ -7,5 +7,6 @@
   "repository": "https://github.com/lama-assaf/atelier",
   "agents": "./agents",
   "skills": "./skills",
-  "commands": "./commands"
+  "commands": "./commands",
+  "hooks": "./hooks/hooks.json"
 }
