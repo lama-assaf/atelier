@@ -1,10 +1,10 @@
 {
-  "name": "studio-universal",
-  "version": "0.3.0",
+  "name": "atelier",
+  "version": "0.1.0",
   "description": "harness-native operator system for design, product and brand work",
   "main": "scripts/install.js",
   "bin": {
-    "studio-install": "scripts/install.js"
+    "atelier-install": "scripts/install.js"
   },
   "scripts": {
     "install:claude": "node scripts/install.js --target claude",
@@ -22,22 +22,20 @@
     "mcp"
   ],
   "author": {
-    "name": "Dragoon0x",
-    "url": "https://github.com/Dragoon0x"
+    "name": "lama-assaf",
+    "url": "https://github.com/lama-assaf"
   },
   "contributors": [
-    {
-      "name": "Dragoon0x",
-      "url": "https://github.com/Dragoon0x"
-    }
+    { "name": "lama-assaf", "url": "https://github.com/lama-assaf" },
+    { "name": "Dragoon0x", "url": "https://github.com/Dragoon0x" }
   ],
   "license": "MIT",
-  "homepage": "https://github.com/Dragoon0x/studio",
+  "homepage": "https://github.com/lama-assaf/atelier",
   "bugs": {
-    "url": "https://github.com/Dragoon0x/studio/issues"
+    "url": "https://github.com/lama-assaf/atelier/issues"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Dragoon0x/studio.git"
+    "url": "https://github.com/lama-assaf/atelier.git"
   }
 }

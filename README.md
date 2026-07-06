@@ -1,4 +1,6 @@
-# STUDIO
+# atelier
+
+> atelier is a fork of [Dragoon0x/studio](https://github.com/Dragoon0x/studio) (MIT) by Dragoon0x, adapted as a self-contained Claude Code marketplace plugin with per-project memory.
 
 harness-native operator system for design, product and brand work.
 
@@ -22,11 +24,16 @@ studio/
 └── tests/            run-all.js validator
 ```
 
+## install (claude code)
+
+/plugin marketplace add lama-assaf/atelier
+/plugin install atelier@atelier
+
 ## quick install (claude code)
 
 ```bash
-git clone https://github.com/Dragoon0x/studio.git ~/.claude/studio
-cd ~/.claude/studio
+git clone https://github.com/lama-assaf/atelier.git ~/.claude/atelier
+cd ~/.claude/atelier
 ./install.sh
 ```
 
@@ -149,13 +156,14 @@ see DISCLAIMER.md. opinions in agents and skills are starting points; override t
 
 ## author
 
-[Dragoon0x](https://github.com/Dragoon0x) — [0xdragoon.xyz](https://0xdragoon.xyz/). issues and PRs welcome at [github.com/Dragoon0x/studio](https://github.com/Dragoon0x/studio).
+[lama-assaf](https://github.com/lama-assaf). issues and PRs welcome at [github.com/lama-assaf/atelier](https://github.com/lama-assaf/atelier).
 
 ## contributors
 
-- [Dragoon0x](https://github.com/Dragoon0x) — creator, maintainer.
+- [lama-assaf](https://github.com/lama-assaf) — fork maintainer.
+- [Dragoon0x](https://github.com/Dragoon0x) — creator of upstream [studio](https://github.com/Dragoon0x/studio).
 
-full contributor list lives on the GitHub [contributors page](https://github.com/Dragoon0x/studio/graphs/contributors).
+full contributor list lives on the GitHub [contributors page](https://github.com/lama-assaf/atelier/graphs/contributors).
 
 ---
 
