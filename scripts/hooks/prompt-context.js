@@ -1,11 +1,11 @@
 #!/usr/bin/env node
 // prompt-context.js
 // user-prompt-submit hook. inspects the user's prompt and surfaces the most relevant
-// STUDIO skill/agent/rule files as additional context.
+// atelier skill/agent/rule files as additional context.
 //
 // install:
 //   {
-//     "hooks": [{ "type": "command", "command": "node /path/to/studio/scripts/hooks/prompt-context.js" }]
+//     "hooks": [{ "type": "command", "command": "node /path/to/atelier/scripts/hooks/prompt-context.js" }]
 //   }
 //   under hooks.UserPromptSubmit in your claude code settings.
 
@@ -73,14 +73,14 @@ const KEYWORDS = {
   'onboarding email': ['skills/email-sequence/SKILL.md'],
 };
 
-function findStudioRoot() {
+function findAtelierRoot() {
   // try env var first
-  if (process.env.STUDIO_ROOT && fs.existsSync(process.env.STUDIO_ROOT)) {
-    return process.env.STUDIO_ROOT;
+  if (process.env.ATELIER_ROOT && fs.existsSync(process.env.ATELIER_ROOT)) {
+    return process.env.ATELIER_ROOT;
   }
-  // then ~/.claude/studio
-  const claudeStudio = path.join(os.homedir(), '.claude', 'studio');
-  if (fs.existsSync(claudeStudio)) return claudeStudio;
+  // then ~/.claude/atelier
+  const claudeAtelier = path.join(os.homedir(), '.claude', 'atelier');
+  if (fs.existsSync(claudeAtelier)) return claudeAtelier;
   // fall back to two dirs up from this script (scripts/hooks/ -> root)
   return path.resolve(__dirname, '..', '..');
 }
@@ -100,8 +100,8 @@ function readRelative(root, relPath) {
 }
 
 function getLogDir() {
-  if (process.env.STUDIO_LOG_DIR) return process.env.STUDIO_LOG_DIR;
-  return path.join(os.homedir(), '.claude', 'studio', 'logs');
+  if (process.env.ATELIER_LOG_DIR) return process.env.ATELIER_LOG_DIR;
+  return path.join(os.homedir(), '.claude', 'atelier', 'logs');
 }
 
 function logActivation(prompt, matchedKeywords, refs) {
@@ -143,7 +143,7 @@ function main() {
     }
   }
 
-  const root = findStudioRoot();
+  const root = findAtelierRoot();
 
   // always include memory/instincts.md if it exists and has user content
   // (we skip if the file is unedited template — heuristic: contains "delete these once you have your own")
@@ -168,13 +168,13 @@ function main() {
   const blocks = [];
 
   if (hasInstincts) {
-    blocks.push(`# studio reference: ${instinctsRel}\n\n${instinctsContent}`);
+    blocks.push(`# atelier reference: ${instinctsRel}\n\n${instinctsContent}`);
   }
 
   for (const rel of matched) {
     const content = readRelative(root, rel);
     if (content) {
-      blocks.push(`# studio reference: ${rel}\n\n${content}`);
+      blocks.push(`# atelier reference: ${rel}\n\n${content}`);
     }
   }
 
@@ -190,7 +190,7 @@ function main() {
     continue: true,
     hookSpecificOutput: {
       hookEventName: 'UserPromptSubmit',
-      additionalContext: `studio loaded ${blocks.length} relevant reference(s) based on your prompt:\n\n${blocks.join('\n\n---\n\n')}`,
+      additionalContext: `atelier loaded ${blocks.length} relevant reference(s) based on your prompt:\n\n${blocks.join('\n\n---\n\n')}`,
     },
   };
   process.stdout.write(JSON.stringify(payload));

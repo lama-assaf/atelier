@@ -62,7 +62,7 @@ function extractWriteContent(hookInput) {
  * write a structured warning to stderr in a format claude code surfaces back to the user.
  */
 function warn(message) {
-  process.stderr.write(`[studio:hook] ${message}\n`);
+  process.stderr.write(`[atelier:hook] ${message}\n`);
 }
 
 /**

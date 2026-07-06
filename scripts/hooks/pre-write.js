@@ -8,13 +8,13 @@
 // install (add to your settings.json under hooks):
 //   {
 //     "matcher": "Write|Edit|MultiEdit",
-//     "hooks": [{ "type": "command", "command": "node /path/to/studio/scripts/hooks/pre-write.js" }]
+//     "hooks": [{ "type": "command", "command": "node /path/to/atelier/scripts/hooks/pre-write.js" }]
 //   }
 //
 // exit codes:
 //   0 = allow, hook output (stdout JSON) may add context
 //   1 = soft error (logged but doesn't block)
-//   2 = block (we never use this by default; set STUDIO_HOOK_STRICT=1 to block)
+//   2 = block (we never use this by default; set ATELIER_HOOK_STRICT=1 to block)
 
 'use strict';
 
@@ -87,10 +87,10 @@ function main() {
     process.exit(0);
   }
 
-  const summary = `studio rules flagged the content being written:\n\n${messages.join('\n\n')}\n\n(this is a non-blocking warning. set STUDIO_HOOK_STRICT=1 to block on flags.)`;
+  const summary = `atelier rules flagged the content being written:\n\n${messages.join('\n\n')}\n\n(this is a non-blocking warning. set ATELIER_HOOK_STRICT=1 to block on flags.)`;
 
   // strict mode: write to stderr and exit 2 to block
-  if (process.env.STUDIO_HOOK_STRICT === '1') {
+  if (process.env.ATELIER_HOOK_STRICT === '1') {
     warn(summary);
     process.exit(2);
   }
