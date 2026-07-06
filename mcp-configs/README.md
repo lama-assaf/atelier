@@ -2,6 +2,12 @@
 
 mcp (model context protocol) server templates for the tools STUDIO most commonly references.
 
+## quick start
+
+run `/atelier:mcp-setup` in any project — it walks through this catalog and
+merges your choices into that project's `.mcp.json`. nothing here auto-loads
+with the plugin; every server is opt-in per project.
+
 ## what's in here
 
 - `mcp-servers.json` — server definitions ready to drop into claude code's settings or any mcp-compatible harness

@@ -531,7 +531,8 @@ section('dashboard build');
     const html = fs.readFileSync(path.join(tmpOut, 'index.html'), 'utf-8');
     // verify generated HTML doesn't contain unsubstituted server-side template vars
     // (${escapeHtml(...)} inside <script> is legitimate JS template literal usage, not server-side)
-    const serverSidePatterns = ['${STUDIO_ROOT}', '${VERSION}', '${COUNT}'];
+    // ${STUDIO_ROOT} is excluded because it legitimately appears in command docs and is never a build-side var
+    const serverSidePatterns = ['${VERSION}', '${COUNT}'];
     const hasUnsubstituted = serverSidePatterns.some((p) => html.includes(p));
     if (!hasUnsubstituted) {
       ok('build.js: no unsubstituted server-side template vars');
