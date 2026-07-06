@@ -531,9 +531,15 @@ section('dashboard build');
     const html = fs.readFileSync(path.join(tmpOut, 'index.html'), 'utf-8');
     // verify generated HTML doesn't contain unsubstituted server-side template vars
     // (${escapeHtml(...)} inside <script> is legitimate JS template literal usage, not server-side)
-    // ${STUDIO_ROOT} is excluded because it legitimately appears in command docs and is never a build-side var
-    const serverSidePatterns = ['${VERSION}', '${COUNT}'];
-    const hasUnsubstituted = serverSidePatterns.some((p) => html.includes(p));
+    // the guard checks the whole corpus (every agent/skill/command/rule body gets embedded
+    // in the dashboard HTML). commands/mcp-setup.md's documented placeholder
+    // ("replace `${STUDIO_ROOT}` in the template args with the ...") is the single
+    // allowlisted occurrence of ${STUDIO_ROOT} — it is stripped from the HTML before the
+    // check runs, so ${STUDIO_ROOT} still fails the guard everywhere else.
+    const legitimateStudioRootMention = 'replace `${STUDIO_ROOT}` in the template args with the';
+    const sanitizedHtml = html.split(legitimateStudioRootMention).join('');
+    const serverSidePatterns = ['${STUDIO_ROOT}', '${VERSION}', '${COUNT}'];
+    const hasUnsubstituted = serverSidePatterns.some((p) => sanitizedHtml.includes(p));
     if (!hasUnsubstituted) {
       ok('build.js: no unsubstituted server-side template vars');
     } else {
