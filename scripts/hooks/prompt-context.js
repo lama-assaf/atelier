@@ -167,9 +167,10 @@ function main() {
 
   const root = findAtelierRoot();
 
-  // always include memory/instincts.md if it exists and has user content
-  // (we skip if the file is unedited template — heuristic: contains "delete these once you have your own")
-  // per-project memory first; plugin seed only as fallback
+  // resolve instincts.md: per-project memory (.atelier/memory/instincts.md) first,
+  // falling back to the plugin's seed copy (memory/instincts.md) if the project has
+  // none. either way, skip surfacing it if it's still the unedited template —
+  // heuristic: contains "delete these once you have your own".
   const projectDir = findProjectDir(input);
   let instinctsRel = null;
   let instinctsContent = null;

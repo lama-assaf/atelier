@@ -19,10 +19,12 @@ template examples).
 
 ## this directory is the seed
 
-the files here (instincts.md, lessons.md, glossary.md, decisions/, templates/)
-are **templates**, copied into a project by `/atelier:memory-init`. edit them to
-change what new projects start with; edit the project's own `.atelier/memory/`
-to change what atelier remembers about that project.
+the files here are **templates**. `/atelier:memory-init` copies instincts.md,
+lessons.md, glossary.md, and decisions/README.md into a project's
+`.atelier/memory/`; `templates/` stays seed-side only (it's not copied — see
+`commands/memory-init.md`). edit the files here to change what new projects
+start with; edit the project's own `.atelier/memory/` to change what atelier
+remembers about that project.
 
 ## commands
 

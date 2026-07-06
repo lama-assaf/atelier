@@ -26,10 +26,18 @@ studio/
 
 ## install (claude code)
 
+the only supported claude code install path is the plugin marketplace:
+
+```
 /plugin marketplace add lama-assaf/atelier
 /plugin install atelier@atelier
+```
 
-## quick install (claude code)
+hooks, commands, agents, and skills load automatically once the plugin is installed — no manual settings.json editing needed.
+
+## manual / other-harness install (cursor, codex, opencode, gemini cli, zed, vscode)
+
+for harnesses other than claude code (or if you want a local checkout instead of the plugin), use the installer:
 
 ```bash
 git clone https://github.com/lama-assaf/atelier.git ~/.claude/atelier
@@ -37,7 +45,7 @@ cd ~/.claude/atelier
 ./install.sh
 ```
 
-the installer links the plugin, writes the hooks config into `~/.claude/settings.json` with absolute paths, and copies the mcp templates.
+the installer links the checkout, writes a hooks config with absolute paths (for manual merge into `~/.claude/settings.json` if you're not using the claude code plugin), and copies the mcp templates. see "install options" below and each adapter's own installer for cursor, codex, opencode, gemini cli, zed, and vscode.
 
 ## what's in here
 
@@ -61,7 +69,7 @@ brand: `/brand-check`, `/name`, `/copy-review`, `/voice-extract`, `/tagline`, `/
 
 ### hooks (3)
 
-`pre-write` flags ai-tone and rhythm flatness before writes. `post-write` logs every write. `prompt-context` surfaces relevant skills based on prompt keywords and logs each activation. all non-blocking by default. set `STUDIO_HOOK_STRICT=1` to block on flags.
+`pre-write` flags ai-tone and rhythm flatness before writes. `post-write` logs every write. `prompt-context` surfaces relevant skills based on prompt keywords and logs each activation. all non-blocking by default. set `ATELIER_HOOK_STRICT=1` to block on flags.
 
 ### rules (23)
 
