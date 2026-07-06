@@ -8,7 +8,7 @@
   },
   "scripts": {
     "install:claude": "node scripts/install.js --target claude",
-    "test": "node tests/run-all.js",
+    "test": "node tests/run-all.js && node tests/memory-resolution.test.js",
     "dashboard": "node scripts/dashboard/build.js",
     "logs": "node scripts/dashboard/log-viewer.js",
     "check-refs": "node scripts/util/check-references.js"

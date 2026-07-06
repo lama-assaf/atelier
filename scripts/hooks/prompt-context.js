@@ -85,6 +85,20 @@ function findAtelierRoot() {
   return path.resolve(__dirname, '..', '..');
 }
 
+function findProjectDir(input) {
+  const candidates = [];
+  if (input && typeof input.cwd === 'string' && input.cwd) candidates.push(input.cwd);
+  if (process.env.CLAUDE_PROJECT_DIR) candidates.push(process.env.CLAUDE_PROJECT_DIR);
+  for (const c of candidates) {
+    try {
+      if (fs.existsSync(c) && fs.statSync(c).isDirectory()) return c;
+    } catch (e) {
+      // unreadable candidate — try the next one
+    }
+  }
+  return null;
+}
+
 function readRelative(root, relPath) {
   try {
     const full = path.join(root, relPath);
@@ -147,8 +161,21 @@ function main() {
 
   // always include memory/instincts.md if it exists and has user content
   // (we skip if the file is unedited template — heuristic: contains "delete these once you have your own")
-  const instinctsRel = 'memory/instincts.md';
-  const instinctsContent = readRelative(root, instinctsRel);
+  // per-project memory first; plugin seed only as fallback
+  const projectDir = findProjectDir(input);
+  let instinctsRel = null;
+  let instinctsContent = null;
+  if (projectDir) {
+    const projInstincts = readRelative(projectDir, path.join('.atelier', 'memory', 'instincts.md'));
+    if (projInstincts) {
+      instinctsContent = projInstincts;
+      instinctsRel = '.atelier/memory/instincts.md (project memory)';
+    }
+  }
+  if (!instinctsContent) {
+    instinctsContent = readRelative(root, 'memory/instincts.md');
+    if (instinctsContent) instinctsRel = 'memory/instincts.md (atelier defaults)';
+  }
   let hasInstincts = false;
   if (instinctsContent && !instinctsContent.includes('delete these once you have your own')) {
     hasInstincts = true;
