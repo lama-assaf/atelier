@@ -1,0 +1,43 @@
+{
+  "name": "studio-universal",
+  "version": "0.3.0",
+  "description": "harness-native operator system for design, product and brand work",
+  "main": "scripts/install.js",
+  "bin": {
+    "studio-install": "scripts/install.js"
+  },
+  "scripts": {
+    "install:claude": "node scripts/install.js --target claude",
+    "test": "node tests/run-all.js",
+    "dashboard": "node scripts/dashboard/build.js",
+    "logs": "node scripts/dashboard/log-viewer.js",
+    "check-refs": "node scripts/util/check-references.js"
+  },
+  "keywords": [
+    "claude-code",
+    "design-system",
+    "brand-voice",
+    "product-management",
+    "ai-agents",
+    "mcp"
+  ],
+  "author": {
+    "name": "Dragoon0x",
+    "url": "https://github.com/Dragoon0x"
+  },
+  "contributors": [
+    {
+      "name": "Dragoon0x",
+      "url": "https://github.com/Dragoon0x"
+    }
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/Dragoon0x/studio",
+  "bugs": {
+    "url": "https://github.com/Dragoon0x/studio/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Dragoon0x/studio.git"
+  }
+}

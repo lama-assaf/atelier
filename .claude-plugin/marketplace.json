@@ -1,0 +1,14 @@
+{
+  "name": "studio",
+  "description": "design, product and brand operator system for claude code",
+  "plugins": [
+    {
+      "name": "studio",
+      "source": {
+        "source": "github",
+        "repo": "Dragoon0x/studio"
+      },
+      "description": "agents, skills, hooks, rules and commands for design, product and brand work"
+    }
+  ]
+}

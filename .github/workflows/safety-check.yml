@@ -1,0 +1,35 @@
+name: safety-check
+
+# fails the build if the DYOR footer, hardened DISCLAIMER, or structured
+# author/contributors metadata is missing. these blocks get repeatedly
+# dropped by session regenerations; this is the remote safety net.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  safety-guard:
+    name: safety-guard
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+
+      - name: setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: run safety-guard
+        run: node scripts/util/safety-guard.js
+
+      - name: run full test suite
+        run: node tests/run-all.js
