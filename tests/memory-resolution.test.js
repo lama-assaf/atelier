@@ -70,6 +70,40 @@ console.log('\nmemory resolution');
   check('exit 0 with bogus cwd', res.status === 0, `status ${res.status}`);
 }
 
+// 5. keyword injection survives a logs-only ~/.claude/atelier
+//    (regression: findAtelierRoot() must not accept a dir that only has logs/)
+{
+  const tmpHome = tmpProject();
+  fs.mkdirSync(path.join(tmpHome, '.claude', 'atelier', 'logs'), { recursive: true });
+  const res = spawnSync(process.execPath, [HOOK], {
+    input: JSON.stringify({ prompt: 'design review of the header', cwd: '/nonexistent-xyz' }),
+    encoding: 'utf-8',
+    env: { ...process.env, HOME: tmpHome },
+  });
+  check('exit 0 with logs-only ~/.claude/atelier', res.status === 0, `status ${res.status}`);
+  check(
+    'keyword reference injected despite logs-only atelier root',
+    res.stdout.includes('skills/design-review/SKILL.md'),
+    res.stdout.slice(0, 200)
+  );
+}
+
+// 6. bogus ATELIER_ROOT falls back to the repo
+{
+  const bogusRoot = tmpProject();
+  const res = spawnSync(process.execPath, [HOOK], {
+    input: JSON.stringify({ prompt: 'design review of the header', cwd: '/nonexistent-xyz' }),
+    encoding: 'utf-8',
+    env: { ...process.env, ATELIER_ROOT: bogusRoot },
+  });
+  check('exit 0 with bogus ATELIER_ROOT', res.status === 0, `status ${res.status}`);
+  check(
+    'keyword reference injected via fallback to repo root',
+    res.stdout.includes('skills/design-review/SKILL.md'),
+    res.stdout.slice(0, 200)
+  );
+}
+
 if (fail > 0) {
   console.log(`\n${fail} failure(s)`);
   process.exit(1);

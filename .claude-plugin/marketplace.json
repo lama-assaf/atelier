@@ -1,5 +1,9 @@
 {
   "name": "atelier",
+  "owner": {
+    "name": "lama-assaf",
+    "url": "https://github.com/lama-assaf"
+  },
   "description": "design, product and brand operator system for claude code",
   "plugins": [
     {

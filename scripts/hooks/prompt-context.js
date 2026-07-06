@@ -73,14 +73,22 @@ const KEYWORDS = {
   'onboarding email': ['skills/email-sequence/SKILL.md'],
 };
 
+function isAtelierRoot(p) {
+  try {
+    return fs.existsSync(path.join(p, 'skills')) && fs.existsSync(path.join(p, 'memory'));
+  } catch (e) {
+    return false;
+  }
+}
+
 function findAtelierRoot() {
-  // try env var first
-  if (process.env.ATELIER_ROOT && fs.existsSync(process.env.ATELIER_ROOT)) {
+  // env override, then ~/.claude/atelier — but only if they actually contain
+  // plugin content (the logs dir alone also lives under ~/.claude/atelier)
+  if (process.env.ATELIER_ROOT && isAtelierRoot(process.env.ATELIER_ROOT)) {
     return process.env.ATELIER_ROOT;
   }
-  // then ~/.claude/atelier
   const claudeAtelier = path.join(os.homedir(), '.claude', 'atelier');
-  if (fs.existsSync(claudeAtelier)) return claudeAtelier;
+  if (isAtelierRoot(claudeAtelier)) return claudeAtelier;
   // fall back to two dirs up from this script (scripts/hooks/ -> root)
   return path.resolve(__dirname, '..', '..');
 }
