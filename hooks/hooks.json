@@ -1,5 +1,4 @@
 {
-  "_comment": "atelier hooks. loaded automatically when the plugin is installed via claude code's plugin system; ${CLAUDE_PLUGIN_ROOT} is resolved by claude code to the installed plugin directory. for manual use in other harnesses, replace ${CLAUDE_PLUGIN_ROOT} with the repo path and merge into your settings under the hooks key.",
   "hooks": {
     "UserPromptSubmit": [
       {
