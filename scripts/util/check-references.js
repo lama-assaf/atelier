@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // check-references.js
-// scan STUDIO source for broken cross-references and orphaned files.
+// scan atelier source for broken cross-references and orphaned files.
 //
 // detects:
 //   - skill referenced in prompt-context.js but doesn't exist on disk
@@ -241,7 +241,7 @@ function rel(f) {
   return path.relative(ROOT, f) || f;
 }
 
-console.log('STUDIO reference check\n');
+console.log('atelier reference check\n');
 console.log(`  errors:   ${errors.length}`);
 console.log(`  warnings: ${warnings.length}`);
 console.log(`  info:     ${infos.length}\n`);

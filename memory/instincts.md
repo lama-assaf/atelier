@@ -1,6 +1,6 @@
 # instincts
 
-short, durable patterns to apply across every STUDIO session.
+short, durable patterns to apply across every atelier session.
 
 this file is a template. add your own. remove what doesn't apply. keep entries short.
 

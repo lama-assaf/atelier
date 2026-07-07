@@ -1,3 +1,5 @@
+> this changelog begins as the upstream history of [Dragoon0x/studio](https://github.com/Dragoon0x/studio), from which atelier was forked at v0.3.0. entries below predate the fork and use the original STUDIO naming.
+
 # changelog
 
 ## 0.3.0 — session 3

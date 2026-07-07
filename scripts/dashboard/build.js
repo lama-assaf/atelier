@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // build.js
-// generate a static HTML dashboard from STUDIO source.
+// generate a static HTML dashboard from atelier source.
 // reads agents/, skills/, commands/, rules/ and writes docs/index.html with all content inlined.
 //
 // usage:
@@ -27,7 +27,7 @@ function parseArgs(argv) {
 }
 
 function help() {
-  console.log(`STUDIO dashboard builder
+  console.log(`atelier dashboard builder
 
 usage:
   node scripts/dashboard/build.js                generate docs/
@@ -237,7 +237,7 @@ function renderHtml({ items, counts, version }) {
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>STUDIO ${escapeHtml(version)} — operator dashboard</title>
+<title>atelier ${escapeHtml(version)} — operator dashboard</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap" rel="stylesheet">
@@ -546,7 +546,7 @@ footer.site a:hover { color: var(--accent); }
 
 <div class="layout">
   <aside>
-    <div class="logo">STUDIO</div>
+    <div class="logo">atelier</div>
     <div class="tag">v${escapeHtml(version)}</div>
 
     <div class="group">
@@ -570,15 +570,15 @@ footer.site a:hover { color: var(--accent); }
 
     <div class="group">
       <h3>links</h3>
-      <a href="https://github.com/Dragoon0x/studio" style="display:block;padding:6px 0;color:var(--fg-muted);text-decoration:none;font-size:13px">github</a>
-      <a href="https://github.com/Dragoon0x/studio/blob/main/CHANGELOG.md" style="display:block;padding:6px 0;color:var(--fg-muted);text-decoration:none;font-size:13px">changelog</a>
+      <a href="https://github.com/lama-assaf/atelier" style="display:block;padding:6px 0;color:var(--fg-muted);text-decoration:none;font-size:13px">github</a>
+      <a href="https://github.com/lama-assaf/atelier/blob/main/CHANGELOG.md" style="display:block;padding:6px 0;color:var(--fg-muted);text-decoration:none;font-size:13px">changelog</a>
     </div>
   </aside>
 
   <main>
     <header class="page">
       <h1>operator dashboard</h1>
-      <p class="lede">browse every agent, skill, command and rule that ships with STUDIO. filter by type or lane, search anything, click a card to read the source.</p>
+      <p class="lede">browse every agent, skill, command and rule that ships with atelier. filter by type or lane, search anything, click a card to read the source.</p>
       <div class="search-wrap">
         <input id="search" type="text" placeholder="search by name, description, content..." autofocus>
       </div>
@@ -593,7 +593,7 @@ footer.site a:hover { color: var(--accent); }
     <div id="results"></div>
 
     <footer class="site">
-      <div>STUDIO v${escapeHtml(version)} · MIT</div>
+      <div>atelier v${escapeHtml(version)} · MIT</div>
       <div>by <a href="https://github.com/Dragoon0x">Dragoon0x</a></div>
     </footer>
   </main>

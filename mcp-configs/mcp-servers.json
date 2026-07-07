@@ -1,5 +1,5 @@
 {
-  "_comment": "STUDIO mcp server templates. paths/URLs reflect popular community or official servers as of late 2025. update to whichever variant your team uses. these are starting points, not endorsements. fill in tokens via env or your harness's secret store before using.",
+  "_comment": "atelier mcp server templates. paths/URLs reflect popular community or official servers as of late 2025. update to whichever variant your team uses. these are starting points, not endorsements. fill in tokens via env or your harness's secret store before using.",
   "mcpServers": {
     "figma-remote": {
       "_comment": "official figma mcp via remote URL (claude.ai connector style). check current docs at figma.com.",

@@ -1,6 +1,6 @@
 # brand voice
 
-every brand has a voice. STUDIO assumes the voice is documented (see brand-voice-extraction skill). these are the meta-rules that apply to any voice.
+every brand has a voice. atelier assumes the voice is documented (see brand-voice-extraction skill). these are the meta-rules that apply to any voice.
 
 ## consistency over flourish
 

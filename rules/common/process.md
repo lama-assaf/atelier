@@ -1,6 +1,6 @@
 # process
 
-how STUDIO work flows.
+how atelier work flows.
 
 ## start with the why, not the what
 

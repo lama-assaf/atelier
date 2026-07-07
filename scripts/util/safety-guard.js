@@ -62,7 +62,7 @@ if (readme == null) {
     {
       missing: '"no affiliation" language',
       test: () => /no\s+affiliation/i.test(readme) || /not\s+affiliated/i.test(readme),
-      hint: 'state that STUDIO is not affiliated with any referenced company',
+      hint: 'state that atelier is not affiliated with any referenced company',
     },
     {
       missing: '"operator owns the output" language',
@@ -98,7 +98,7 @@ if (disclaimer == null) {
     {
       missing: 'experimental status block',
       test: () => /experimental/i.test(disclaimer),
-      hint: 'state STUDIO is experimental / early-stage / work-in-progress',
+      hint: 'state atelier is experimental / early-stage / work-in-progress',
     },
     {
       missing: 'DYOR section',

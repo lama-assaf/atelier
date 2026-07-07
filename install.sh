@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
-# STUDIO installer for unix-like systems
+# atelier installer for unix-like systems
 set -e
 
-STUDIO_ROOT="$(cd "$(dirname "$0")" && pwd)"
+ATELIER_ROOT="$(cd "$(dirname "$0")" && pwd)"
 TARGET="claude"
 RULES="all"
 WITH_HOOKS=1
@@ -10,7 +10,7 @@ ADAPTERS=""
 
 usage() {
   cat << HELP
-STUDIO installer
+atelier installer
 
 usage: ./install.sh [options]
 
@@ -39,8 +39,8 @@ while [[ $# -gt 0 ]]; do
   esac
 done
 
-echo "STUDIO installer"
-echo "  source:    $STUDIO_ROOT"
+echo "atelier installer"
+echo "  source:    $ATELIER_ROOT"
 echo "  target:    $TARGET"
 echo "  rules:     $RULES"
 echo "  hooks:     $([ $WITH_HOOKS -eq 1 ] && echo 'yes' || echo 'no')"
@@ -51,23 +51,23 @@ echo ""
 if [ "$TARGET" = "claude" ]; then
   CLAUDE_DIR="$HOME/.claude"
   mkdir -p "$CLAUDE_DIR"
-  if [ ! -e "$CLAUDE_DIR/studio" ]; then
-    ln -s "$STUDIO_ROOT" "$CLAUDE_DIR/studio"
-    echo "linked $CLAUDE_DIR/studio -> $STUDIO_ROOT"
+  if [ ! -e "$CLAUDE_DIR/atelier" ]; then
+    ln -s "$ATELIER_ROOT" "$CLAUDE_DIR/atelier"
+    echo "linked $CLAUDE_DIR/atelier -> $ATELIER_ROOT"
   else
-    echo "$CLAUDE_DIR/studio already exists (skipping)"
+    echo "$CLAUDE_DIR/atelier already exists (skipping)"
   fi
 
   # hooks setup
   if [ $WITH_HOOKS -eq 1 ]; then
     SETTINGS="$CLAUDE_DIR/settings.json"
-    HOOKS_TEMPLATE="$STUDIO_ROOT/hooks/hooks.json"
+    HOOKS_TEMPLATE="$ATELIER_ROOT/hooks/hooks.json"
 
     # generate a hooks config with ${CLAUDE_PLUGIN_ROOT} (and any legacy ${STUDIO_ROOT}) resolved
     # to the local install path — hooks.json ships with ${CLAUDE_PLUGIN_ROOT} for the claude
     # code plugin loader, which this manual installer has to substitute itself.
-    GENERATED_HOOKS="$CLAUDE_DIR/studio-hooks.json"
-    sed -e "s|\${CLAUDE_PLUGIN_ROOT}|$STUDIO_ROOT|g" -e "s|\${STUDIO_ROOT}|$STUDIO_ROOT|g" "$HOOKS_TEMPLATE" > "$GENERATED_HOOKS"
+    GENERATED_HOOKS="$CLAUDE_DIR/atelier-hooks.json"
+    sed -e "s|\${CLAUDE_PLUGIN_ROOT}|$ATELIER_ROOT|g" -e "s|\${STUDIO_ROOT}|$ATELIER_ROOT|g" "$HOOKS_TEMPLATE" > "$GENERATED_HOOKS"
     echo "wrote $GENERATED_HOOKS"
     echo ""
     echo "next: merge the hooks key from $GENERATED_HOOKS into $SETTINGS"
@@ -81,10 +81,10 @@ if [ -n "$ADAPTERS" ]; then
   IFS=',' read -ra ADAPTER_LIST <<< "$ADAPTERS"
   for a in "${ADAPTER_LIST[@]}"; do
     a_trim=$(echo "$a" | tr -d '[:space:]')
-    if [ -x "$STUDIO_ROOT/adapters/$a_trim/install.sh" ]; then
+    if [ -x "$ATELIER_ROOT/adapters/$a_trim/install.sh" ]; then
       echo ""
       echo "running adapter: $a_trim"
-      bash "$STUDIO_ROOT/adapters/$a_trim/install.sh"
+      bash "$ATELIER_ROOT/adapters/$a_trim/install.sh"
     else
       echo "unknown adapter: $a_trim (expected one of: cursor, codex, opencode, gemini, zed, vscode)"
     fi
@@ -92,5 +92,5 @@ if [ -n "$ADAPTERS" ]; then
 fi
 
 echo ""
-echo "STUDIO installed."
-echo "see $STUDIO_ROOT/STUDIO.md for the operator handbook."
+echo "atelier installed."
+echo "see $ATELIER_ROOT/ATELIER.md for the operator handbook."
