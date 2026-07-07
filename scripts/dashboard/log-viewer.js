@@ -16,8 +16,8 @@ const path = require('path');
 const os = require('os');
 
 function getLogDir() {
-  if (process.env.STUDIO_LOG_DIR) return process.env.STUDIO_LOG_DIR;
-  return path.join(os.homedir(), '.claude', 'studio', 'logs');
+  if (process.env.ATELIER_LOG_DIR) return process.env.ATELIER_LOG_DIR;
+  return path.join(os.homedir(), '.claude', 'atelier', 'logs');
 }
 
 function parseArgs(argv) {
@@ -44,7 +44,7 @@ usage:
   node scripts/dashboard/log-viewer.js --top               most-activated skills/refs
 
 logs read from: ${getLogDir()}
-(override with STUDIO_LOG_DIR)`);
+(override with ATELIER_LOG_DIR)`);
 }
 
 function today() {

@@ -63,9 +63,11 @@ if [ "$TARGET" = "claude" ]; then
     SETTINGS="$CLAUDE_DIR/settings.json"
     HOOKS_TEMPLATE="$STUDIO_ROOT/hooks/hooks.json"
 
-    # generate a hooks config with STUDIO_ROOT resolved
+    # generate a hooks config with ${CLAUDE_PLUGIN_ROOT} (and any legacy ${STUDIO_ROOT}) resolved
+    # to the local install path — hooks.json ships with ${CLAUDE_PLUGIN_ROOT} for the claude
+    # code plugin loader, which this manual installer has to substitute itself.
     GENERATED_HOOKS="$CLAUDE_DIR/studio-hooks.json"
-    sed "s|\${STUDIO_ROOT}|$STUDIO_ROOT|g" "$HOOKS_TEMPLATE" > "$GENERATED_HOOKS"
+    sed -e "s|\${CLAUDE_PLUGIN_ROOT}|$STUDIO_ROOT|g" -e "s|\${STUDIO_ROOT}|$STUDIO_ROOT|g" "$HOOKS_TEMPLATE" > "$GENERATED_HOOKS"
     echo "wrote $GENERATED_HOOKS"
     echo ""
     echo "next: merge the hooks key from $GENERATED_HOOKS into $SETTINGS"

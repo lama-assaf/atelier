@@ -1,15 +1,15 @@
 #!/usr/bin/env node
 // post-write.js
 // post-tool-use hook for Write and Edit. logs file writes to a session log so the
-// operator can review what STUDIO touched.
+// operator can review what atelier touched.
 //
 // install:
 //   {
 //     "matcher": "Write|Edit|MultiEdit",
-//     "hooks": [{ "type": "command", "command": "node /path/to/studio/scripts/hooks/post-write.js" }]
+//     "hooks": [{ "type": "command", "command": "node /path/to/atelier/scripts/hooks/post-write.js" }]
 //   }
 //
-// log location: $STUDIO_LOG_DIR or ~/.claude/studio/logs/session-YYYY-MM-DD.log
+// log location: $ATELIER_LOG_DIR or ~/.claude/atelier/logs/session-YYYY-MM-DD.log
 
 'use strict';
 
@@ -19,8 +19,8 @@ const os = require('os');
 const { readHookInput, extractWriteContent } = require('./lib/io');
 
 function getLogDir() {
-  if (process.env.STUDIO_LOG_DIR) return process.env.STUDIO_LOG_DIR;
-  return path.join(os.homedir(), '.claude', 'studio', 'logs');
+  if (process.env.ATELIER_LOG_DIR) return process.env.ATELIER_LOG_DIR;
+  return path.join(os.homedir(), '.claude', 'atelier', 'logs');
 }
 
 function isoDate() {

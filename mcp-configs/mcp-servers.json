@@ -37,9 +37,9 @@
       }
     },
     "filesystem": {
-      "_comment": "official filesystem mcp - sandboxed read/write within studio root. useful for skill self-inspection.",
+      "_comment": "official filesystem mcp - sandboxed read/write within your project root. useful for skill self-inspection.",
       "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-filesystem", "${STUDIO_ROOT}"]
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "${PROJECT_ROOT}"]
     }
   }
 }

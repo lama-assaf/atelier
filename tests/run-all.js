@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // run-all.js
-// STUDIO test runner. validates every part of the repo:
+// atelier test runner. validates every part of the repo:
 //   - all JSON files parse
 //   - every agent/skill/command has valid markdown frontmatter
 //   - every skill folder has exactly SKILL.md
@@ -279,7 +279,7 @@ for (const hookFile of ['pre-write.js', 'post-write.js', 'prompt-context.js']) {
   const r = spawnSync('node', [path.join(HOOKS_DIR, 'pre-write.js')], {
     input,
     encoding: 'utf-8',
-    env: { ...process.env, STUDIO_HOOK_STRICT: '1' },
+    env: { ...process.env, ATELIER_HOOK_STRICT: '1' },
   });
   if (r.status === 2) ok('pre-write: strict mode blocks (exit 2)');
   else err('pre-write strict', `expected exit 2, got ${r.status}`);
@@ -291,11 +291,11 @@ for (const hookFile of ['pre-write.js', 'post-write.js', 'prompt-context.js']) {
     tool_name: 'Write',
     tool_input: { file_path: 'foo.md', content: 'hello' },
   });
-  const tmpLog = '/tmp/studio-test-logs-' + Date.now();
+  const tmpLog = '/tmp/atelier-test-logs-' + Date.now();
   const r = spawnSync('node', [path.join(HOOKS_DIR, 'post-write.js')], {
     input,
     encoding: 'utf-8',
-    env: { ...process.env, STUDIO_LOG_DIR: tmpLog },
+    env: { ...process.env, ATELIER_LOG_DIR: tmpLog },
   });
   if (r.status === 0) ok('post-write: exit 0');
   else err('post-write exit', `status=${r.status}, stderr=${r.stderr}`);
@@ -322,7 +322,7 @@ for (const hookFile of ['pre-write.js', 'post-write.js', 'prompt-context.js']) {
   const r = spawnSync('node', [path.join(HOOKS_DIR, 'prompt-context.js')], {
     input,
     encoding: 'utf-8',
-    env: { ...process.env, STUDIO_ROOT: ROOT },
+    env: { ...process.env, ATELIER_ROOT: ROOT },
   });
   if (r.status === 0 && r.stdout.includes('prd-writing')) ok('prompt-context: surfaces prd skill');
   else err('prompt-context prd', `status=${r.status}, stdout=${r.stdout.slice(0,200)}`);
@@ -334,7 +334,7 @@ for (const hookFile of ['pre-write.js', 'post-write.js', 'prompt-context.js']) {
   const r = spawnSync('node', [path.join(HOOKS_DIR, 'prompt-context.js')], {
     input,
     encoding: 'utf-8',
-    env: { ...process.env, STUDIO_ROOT: ROOT },
+    env: { ...process.env, ATELIER_ROOT: ROOT },
   });
   if (r.status === 0 && r.stdout.length === 0) ok('prompt-context: silent on no match');
   else err('prompt-context no match', `status=${r.status}, stdout=${r.stdout.slice(0,100)}`);
@@ -531,6 +531,9 @@ section('dashboard build');
     const html = fs.readFileSync(path.join(tmpOut, 'index.html'), 'utf-8');
     // verify generated HTML doesn't contain unsubstituted server-side template vars
     // (${escapeHtml(...)} inside <script> is legitimate JS template literal usage, not server-side)
+    // the guard checks the whole corpus (every agent/skill/command/rule body gets embedded
+    // in the dashboard HTML). ${STUDIO_ROOT} is retired repo-wide (mcp-setup.md now uses
+    // ${PROJECT_ROOT}), so no command doc contains it and no allowlisting is needed here.
     const serverSidePatterns = ['${STUDIO_ROOT}', '${VERSION}', '${COUNT}'];
     const hasUnsubstituted = serverSidePatterns.some((p) => html.includes(p));
     if (!hasUnsubstituted) {
@@ -558,7 +561,7 @@ section('log viewer');
   // log-viewer should handle empty log dir gracefully
   const r = spawnSync('node', [path.join(ROOT, 'scripts/dashboard/log-viewer.js')], {
     encoding: 'utf-8',
-    env: { ...process.env, STUDIO_LOG_DIR: tmpLog },
+    env: { ...process.env, ATELIER_LOG_DIR: tmpLog },
   });
   if (r.status === 0 && r.stdout.includes('no activations')) ok('log-viewer: handles empty dir');
   else err('log-viewer empty', `status=${r.status}, stdout=${r.stdout}`);
@@ -566,7 +569,7 @@ section('log viewer');
   // log-viewer --help
   const r2 = spawnSync('node', [path.join(ROOT, 'scripts/dashboard/log-viewer.js'), '--help'], {
     encoding: 'utf-8',
-    env: { ...process.env, STUDIO_LOG_DIR: tmpLog },
+    env: { ...process.env, ATELIER_LOG_DIR: tmpLog },
   });
   if (r2.status === 0 && r2.stdout.includes('STUDIO log viewer')) ok('log-viewer: --help works');
   else err('log-viewer --help', `status=${r2.status}`);

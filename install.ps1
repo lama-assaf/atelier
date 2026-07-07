@@ -32,7 +32,10 @@ if ($Target -eq "claude") {
     if (-not $NoHooks) {
         $HooksTemplate = Join-Path $StudioRoot "hooks\hooks.json"
         $Generated = Join-Path $ClaudeDir "studio-hooks.json"
-        (Get-Content $HooksTemplate -Raw) -replace '\$\{STUDIO_ROOT\}', $StudioRoot.Replace('\','/') | Set-Content $Generated
+        # hooks.json ships with ${CLAUDE_PLUGIN_ROOT} for the claude code plugin loader; this
+        # manual installer substitutes it (and any legacy ${STUDIO_ROOT}) with the local install path.
+        $ResolvedRoot = $StudioRoot.Replace('\','/')
+        (Get-Content $HooksTemplate -Raw) -replace '\$\{CLAUDE_PLUGIN_ROOT\}', $ResolvedRoot -replace '\$\{STUDIO_ROOT\}', $ResolvedRoot | Set-Content $Generated
         Write-Host "wrote $Generated"
         Write-Host "next: merge the hooks key into $ClaudeDir\settings.json"
     }

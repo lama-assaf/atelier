@@ -1,12 +1,12 @@
 {
-  "_comment": "STUDIO hooks template. ${STUDIO_ROOT} is replaced by the installer with the actual path. to use manually, replace ${STUDIO_ROOT} yourself and merge this into ~/.claude/settings.json under the hooks key.",
+  "_comment": "atelier hooks. loaded automatically when the plugin is installed via claude code's plugin system; ${CLAUDE_PLUGIN_ROOT} is resolved by claude code to the installed plugin directory. for manual use in other harnesses, replace ${CLAUDE_PLUGIN_ROOT} with the repo path and merge into your settings under the hooks key.",
   "hooks": {
     "UserPromptSubmit": [
       {
         "hooks": [
           {
             "type": "command",
-            "command": "node ${STUDIO_ROOT}/scripts/hooks/prompt-context.js"
+            "command": "node ${CLAUDE_PLUGIN_ROOT}/scripts/hooks/prompt-context.js"
           }
         ]
       }
@@ -17,7 +17,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "node ${STUDIO_ROOT}/scripts/hooks/pre-write.js"
+            "command": "node ${CLAUDE_PLUGIN_ROOT}/scripts/hooks/pre-write.js"
           }
         ]
       }
@@ -28,7 +28,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "node ${STUDIO_ROOT}/scripts/hooks/post-write.js"
+            "command": "node ${CLAUDE_PLUGIN_ROOT}/scripts/hooks/post-write.js"
           }
         ]
       }

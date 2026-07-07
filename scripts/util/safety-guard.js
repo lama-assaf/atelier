@@ -161,34 +161,40 @@ if (pkgRaw == null) {
       fail(
         'package.json',
         'author is not a structured object',
-        'set `author` to `{ "name": "Dragoon0x", "url": "https://github.com/Dragoon0x" }`'
+        'set `author` to `{ "name": "lama-assaf", "url": "https://github.com/lama-assaf" }`'
       );
     } else {
-      if (pkg.author.name !== 'Dragoon0x') {
-        fail('package.json', 'author.name is not "Dragoon0x"', 'set author.name to "Dragoon0x"');
+      if (pkg.author.name !== 'lama-assaf') {
+        fail('package.json', 'author.name is not "lama-assaf"', 'set author.name to "lama-assaf"');
       }
-      if (pkg.author.url !== 'https://github.com/Dragoon0x') {
+      if (pkg.author.url !== 'https://github.com/lama-assaf') {
         fail(
           'package.json',
           'author.url is not the GitHub profile',
-          'set author.url to "https://github.com/Dragoon0x"'
+          'set author.url to "https://github.com/lama-assaf"'
         );
       }
     }
 
-    if (!Array.isArray(pkg.contributors) || pkg.contributors.length === 0) {
+    const contributors = Array.isArray(pkg.contributors) ? pkg.contributors : [];
+    const hasContributor = (name, url) =>
+      contributors.some((c) => c && c.name === name && c.url === url);
+    if (
+      !hasContributor('lama-assaf', 'https://github.com/lama-assaf') ||
+      !hasContributor('Dragoon0x', 'https://github.com/Dragoon0x')
+    ) {
       fail(
         'package.json',
-        'contributors[] missing or empty',
-        'add a `contributors` array with at least { "name": "Dragoon0x", "url": "https://github.com/Dragoon0x" }'
+        'contributors[] missing required entries',
+        'add a `contributors` array containing both { "name": "lama-assaf", "url": "https://github.com/lama-assaf" } and { "name": "Dragoon0x", "url": "https://github.com/Dragoon0x" }'
       );
     }
 
-    if (typeof pkg.homepage !== 'string' || !pkg.homepage.includes('github.com/Dragoon0x/studio')) {
+    if (typeof pkg.homepage !== 'string' || !pkg.homepage.includes('github.com/lama-assaf/atelier')) {
       fail(
         'package.json',
         'homepage missing or wrong',
-        'set `homepage` to "https://github.com/Dragoon0x/studio"'
+        'set `homepage` to "https://github.com/lama-assaf/atelier"'
       );
     }
 
@@ -196,12 +202,12 @@ if (pkgRaw == null) {
       typeof pkg.bugs !== 'object' ||
       pkg.bugs == null ||
       typeof pkg.bugs.url !== 'string' ||
-      !pkg.bugs.url.includes('github.com/Dragoon0x/studio/issues')
+      !pkg.bugs.url.includes('github.com/lama-assaf/atelier/issues')
     ) {
       fail(
         'package.json',
         'bugs.url missing or wrong',
-        'set `bugs` to `{ "url": "https://github.com/Dragoon0x/studio/issues" }`'
+        'set `bugs` to `{ "url": "https://github.com/lama-assaf/atelier/issues" }`'
       );
     }
   }

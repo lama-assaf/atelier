@@ -1,4 +1,6 @@
-# STUDIO
+# atelier
+
+> atelier is a fork of [Dragoon0x/studio](https://github.com/Dragoon0x/studio) (MIT) by Dragoon0x, adapted as a self-contained Claude Code marketplace plugin with per-project memory.
 
 harness-native operator system for design, product and brand work.
 
@@ -22,15 +24,28 @@ studio/
 └── tests/            run-all.js validator
 ```
 
-## quick install (claude code)
+## install (claude code)
+
+the only supported claude code install path is the plugin marketplace:
+
+```
+/plugin marketplace add lama-assaf/atelier
+/plugin install atelier@atelier
+```
+
+hooks, commands, agents, and skills load automatically once the plugin is installed — no manual settings.json editing needed.
+
+## manual / other-harness install (cursor, codex, opencode, gemini cli, zed, vscode)
+
+for harnesses other than claude code (or if you want a local checkout instead of the plugin), use the installer:
 
 ```bash
-git clone https://github.com/Dragoon0x/studio.git ~/.claude/studio
-cd ~/.claude/studio
+git clone https://github.com/lama-assaf/atelier.git ~/.claude/atelier
+cd ~/.claude/atelier
 ./install.sh
 ```
 
-the installer links the plugin, writes the hooks config into `~/.claude/settings.json` with absolute paths, and copies the mcp templates.
+the installer links the checkout, writes a hooks config with absolute paths (for manual merge into `~/.claude/settings.json` if you're not using the claude code plugin), and copies the mcp templates. see "install options" below and each adapter's own installer for cursor, codex, opencode, gemini cli, zed, and vscode.
 
 ## what's in here
 
@@ -54,7 +69,7 @@ brand: `/brand-check`, `/name`, `/copy-review`, `/voice-extract`, `/tagline`, `/
 
 ### hooks (3)
 
-`pre-write` flags ai-tone and rhythm flatness before writes. `post-write` logs every write. `prompt-context` surfaces relevant skills based on prompt keywords and logs each activation. all non-blocking by default. set `STUDIO_HOOK_STRICT=1` to block on flags.
+`pre-write` flags ai-tone and rhythm flatness before writes. `post-write` logs every write. `prompt-context` surfaces relevant skills based on prompt keywords and logs each activation. all non-blocking by default. set `ATELIER_HOOK_STRICT=1` to block on flags.
 
 ### rules (23)
 
@@ -149,13 +164,14 @@ see DISCLAIMER.md. opinions in agents and skills are starting points; override t
 
 ## author
 
-[Dragoon0x](https://github.com/Dragoon0x) — [0xdragoon.xyz](https://0xdragoon.xyz/). issues and PRs welcome at [github.com/Dragoon0x/studio](https://github.com/Dragoon0x/studio).
+[lama-assaf](https://github.com/lama-assaf). issues and PRs welcome at [github.com/lama-assaf/atelier](https://github.com/lama-assaf/atelier).
 
 ## contributors
 
-- [Dragoon0x](https://github.com/Dragoon0x) — creator, maintainer.
+- [lama-assaf](https://github.com/lama-assaf) — fork maintainer.
+- [Dragoon0x](https://github.com/Dragoon0x) — creator of upstream [studio](https://github.com/Dragoon0x/studio).
 
-full contributor list lives on the GitHub [contributors page](https://github.com/Dragoon0x/studio/graphs/contributors).
+full contributor list lives on the GitHub [contributors page](https://github.com/lama-assaf/atelier/graphs/contributors).
 
 ---
 

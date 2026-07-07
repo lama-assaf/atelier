@@ -24,23 +24,23 @@ scans content about to be written against the banned-word and ai-tone patterns f
 
 default: non-blocking warning surfaced as additional context.
 
-strict mode: set `STUDIO_HOOK_STRICT=1` to block writes containing flags.
+strict mode: set `ATELIER_HOOK_STRICT=1` to block writes containing flags.
 
 excludes binary files, lockfiles, the rules files themselves, node_modules, .git.
 
 ### post-write.js (PostToolUse on Write/Edit)
 
-appends a one-line JSON record per write to `~/.claude/studio/logs/session-YYYY-MM-DD.log`. override with `STUDIO_LOG_DIR`.
+appends a one-line JSON record per write to `~/.claude/atelier/logs/session-YYYY-MM-DD.log`. override with `ATELIER_LOG_DIR`.
 
 ## install
 
-the installer writes `~/.claude/settings.json` with these hooks pointing at the absolute STUDIO path.
+these hooks load automatically when atelier is installed as a claude code plugin (`/plugin install atelier@atelier`) — `${CLAUDE_PLUGIN_ROOT}` in `hooks/hooks.json` is resolved by claude code to the installed plugin directory, no manual setup needed.
 
-manually:
+for other harnesses (or a manual/local checkout), merge them in yourself:
 
 1. open `~/.claude/settings.json`
 2. add the contents of `hooks/hooks.json` under `"hooks"` (merge with anything else there)
-3. replace `${STUDIO_ROOT}` with the absolute path to your studio install (usually `~/.claude/studio`)
+3. replace `${CLAUDE_PLUGIN_ROOT}` with the absolute path to your atelier install (usually `~/.claude/atelier`)
 
 ## test a hook
 
@@ -56,6 +56,6 @@ remove the entries from `~/.claude/settings.json` under `hooks`. or rename the r
 
 ## environment variables
 
-- `STUDIO_ROOT` — where STUDIO is installed (autodetected if unset)
-- `STUDIO_HOOK_STRICT` — `1` to block writes on flags; default off
-- `STUDIO_LOG_DIR` — where post-write logs go; default `~/.claude/studio/logs`
+- `ATELIER_ROOT` — where atelier is installed (autodetected if unset)
+- `ATELIER_HOOK_STRICT` — `1` to block writes on flags; default off
+- `ATELIER_LOG_DIR` — where post-write logs go; default `~/.claude/atelier/logs`

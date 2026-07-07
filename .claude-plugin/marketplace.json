@@ -1,12 +1,16 @@
 {
-  "name": "studio",
+  "name": "atelier",
+  "owner": {
+    "name": "lama-assaf",
+    "url": "https://github.com/lama-assaf"
+  },
   "description": "design, product and brand operator system for claude code",
   "plugins": [
     {
-      "name": "studio",
+      "name": "atelier",
       "source": {
         "source": "github",
-        "repo": "Dragoon0x/studio"
+        "repo": "lama-assaf/atelier"
       },
       "description": "agents, skills, hooks, rules and commands for design, product and brand work"
     }

@@ -2,6 +2,12 @@
 
 mcp (model context protocol) server templates for the tools STUDIO most commonly references.
 
+## quick start
+
+run `/atelier:mcp-setup` in any project — it walks through this catalog and
+merges your choices into that project's `.mcp.json`. nothing here auto-loads
+with the plugin; every server is opt-in per project.
+
 ## what's in here
 
 - `mcp-servers.json` — server definitions ready to drop into claude code's settings or any mcp-compatible harness
@@ -27,7 +33,7 @@ these are **templates**. registry urls, package names, and auth schemes change. 
 | FIGMA_API_KEY | figma-dev-mode | figma.com → settings → personal access tokens |
 | NOTION_TOKEN | notion | notion.so/my-integrations |
 | POSTHOG_API_KEY | posthog | app.posthog.com → project settings → api keys |
-| STUDIO_ROOT | filesystem | path to your studio install |
+| PROJECT_ROOT | filesystem | path to the current project root |
 
 set them in your shell profile or your harness's secret store. never commit tokens.
 

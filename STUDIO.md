@@ -1,4 +1,4 @@
-# STUDIO.md
+# atelier (STUDIO fork)
 
 operator handbook. read this once before using STUDIO seriously.
 
@@ -131,7 +131,7 @@ session plan lives in CHANGELOG.md.
 
 ## reporting issues
 
-github.com/Dragoon0x/studio/issues
+github.com/lama-assaf/atelier/issues
 
 include:
 
