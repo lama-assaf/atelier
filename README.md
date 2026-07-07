@@ -10,11 +10,11 @@ agents, skills, hooks, rules and commands for ai coding agents like claude code,
 atelier/
 ├── agents/           15 specialist agents
 ├── skills/           33 skills across design, product, brand
-├── commands/         29 slash commands
+├── commands/         32 slash commands
 ├── rules/            23 rules across 5 lanes
 ├── hooks/            working claude code hooks (pre-write, post-write, prompt-context)
-├── mcp-configs/      figma, notion, linear, posthog, filesystem
-├── memory/           operator instincts, lessons, decisions, glossary
+├── mcp-configs/      figma, notion, linear, posthog, filesystem (opt-in via /atelier:mcp-setup)
+├── memory/           seed templates for per-project memory (.atelier/memory/)
 ├── adapters/         cursor, codex, opencode, gemini, zed, vscode
 ├── scripts/
 │   ├── hooks/        hook runtime (node, executable)
@@ -33,7 +33,16 @@ the only supported claude code install path is the plugin marketplace:
 /plugin install atelier@atelier
 ```
 
-hooks, commands, agents, and skills load automatically once the plugin is installed — no manual settings.json editing needed.
+hooks, commands, agents, and skills load automatically once the plugin is installed — no manual settings.json editing needed. commands are namespaced: `/atelier:design-review`, `/atelier:memory-init`, etc.
+
+note: while this repo is private, installing requires github access to it (e.g. `gh auth login` as an authorized account).
+
+then, in each project you work in:
+
+```
+/atelier:memory-init      # seed per-project memory (.atelier/memory/)
+/atelier:mcp-setup        # optionally enable mcp servers for the project
+```
 
 ## manual / other-harness install (cursor, codex, opencode, gemini cli, zed, vscode)
 
@@ -61,11 +70,14 @@ design-reviewer, design-system-auditor, accessibility-reviewer, brand-voice-keep
 
 **brand (13)**: brand-voice-extraction, naming-generation, tagline-writing, positioning-statement, messaging-architecture, value-prop-writing, microcopy-writing, landing-copy, case-study-writing, release-narrative, brand-identity-audit, content-calendar, email-sequence.
 
-### commands (29)
+### commands (32)
 
 design: `/design-review`, `/a11y-scan`, `/system-audit`, `/handoff`
 product: `/prd`, `/spec`, `/research-synth`, `/jtbd`, `/roadmap`, `/scope`, `/metrics`, `/experiment`, `/competitor`, `/launch`
 brand: `/brand-check`, `/name`, `/copy-review`, `/voice-extract`, `/tagline`, `/position`, `/messaging`, `/value-prop`, `/microcopy`, `/landing`, `/case-study`, `/release`, `/brand-identity`, `/content-calendar`, `/email-sequence`
+memory & setup: `/memory-init`, `/remember`, `/mcp-setup`
+
+(installed as a claude code plugin, all commands carry the `atelier:` prefix, e.g. `/atelier:prd`.)
 
 ### hooks (3)
 
@@ -122,13 +134,19 @@ each adapter has its own `install.sh`. run from the atelier root:
 ./adapters/cursor/install.sh --project # project-scope
 ```
 
-### memory
+### memory (per-project)
 
-`memory/instincts.md`, `lessons.md`, `glossary.md`, `decisions/`, `templates/`. edit these as you learn what works for your team. instincts get auto-loaded by the prompt-context hook once edited.
+each project gets its own memory in `<project>/.atelier/memory/` (instincts, lessons, decisions, glossary):
 
-### mcp servers
+- `/atelier:memory-init` seeds it from the templates in this repo's `memory/` dir
+- `/atelier:remember <note>` appends a dated lesson; `--instinct` adds a standing rule
+- the prompt-context hook injects the current project's `instincts.md` automatically (this repo's `memory/instincts.md` is only the seed/fallback)
 
-figma (remote + dev mode stdio), notion, linear (remote), posthog, filesystem. see `mcp-configs/README.md` for env vars and setup.
+memory is committed by default so the team shares it; gitignore `.atelier/` for machine-local memory. see `memory/README.md`.
+
+### mcp servers (opt-in)
+
+none auto-load with the plugin. `/atelier:mcp-setup` merges the servers you choose — figma (remote + dev mode stdio), notion, linear (remote), posthog, filesystem — into the current project's `.mcp.json` and tells you which env tokens to set. see `mcp-configs/README.md`.
 
 ## install options
 
@@ -152,7 +170,7 @@ windows:
 npm test
 ```
 
-validates: JSON parsing, agent/skill/command frontmatter, hook execution on 8 edge cases, adapter install scripts, cross-references, dashboard build, log-viewer cli, and unit tests on the banned-word and rhythm checkers. 339 checks.
+validates: JSON parsing, agent/skill/command frontmatter, hook execution on edge cases, adapter install scripts, cross-references, dashboard build, log-viewer cli, unit tests on the banned-word and rhythm checkers, and an end-to-end suite for per-project memory resolution (spawns the real prompt-context hook). ~358 checks across `tests/run-all.js` and `tests/memory-resolution.test.js`.
 
 ## license
 
@@ -177,7 +195,7 @@ full contributor list lives on the GitHub [contributors page](https://github.com
 
 ## status: experimental — DYOR
 
-atelier is **early-stage, experimental software**. session 3 ships a dashboard, log viewer, reference checker, three new skills/commands, and a docs page; sessions 4–5 are unfinished. interfaces, agent contracts, skill descriptions, rule formats, hook signatures, adapter layouts, dashboard scripts, and install scripts may change without notice and without migration paths.
+atelier is **early-stage, experimental software** (v0.1.0, forked from upstream studio v0.3.0). interfaces, agent contracts, skill descriptions, rule formats, hook signatures, adapter layouts, dashboard scripts, and install scripts may change without notice and without migration paths.
 
 **do your own research (DYOR)** before relying on atelier for anything that matters:
 
