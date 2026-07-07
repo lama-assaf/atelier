@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // log-viewer.js
-// inspect STUDIO logs: activations (which skill matched on which prompt) and writes (file ops).
+// inspect atelier logs: activations (which skill matched on which prompt) and writes (file ops).
 //
 // usage:
 //   node scripts/dashboard/log-viewer.js                  # summary of today's activations
@@ -34,7 +34,7 @@ function parseArgs(argv) {
 }
 
 function help() {
-  console.log(`STUDIO log viewer
+  console.log(`atelier log viewer
 
 usage:
   node scripts/dashboard/log-viewer.js                     today's activations

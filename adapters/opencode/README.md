@@ -5,10 +5,10 @@ opencode uses `opencode.json` for configuration and supports custom commands, cu
 ## what this adapter installs
 
 - `~/.config/opencode/opencode.json` (or merges into existing) with:
-  - custom mode entries for each STUDIO command
-  - reference to STUDIO instructions file
-- `~/.config/opencode/command/*.md` — one file per STUDIO command (these become custom commands in opencode)
-- `~/.config/opencode/agent/*.md` — STUDIO agents adapted to opencode's agent format
+  - custom mode entries for each atelier command
+  - reference to atelier instructions file
+- `~/.config/opencode/command/*.md` — one file per atelier command (these become custom commands in opencode)
+- `~/.config/opencode/agent/*.md` — atelier agents adapted to opencode's agent format
 
 ## install
 
@@ -24,4 +24,4 @@ opencode uses `opencode.json` for configuration and supports custom commands, cu
 
 ## uninstall
 
-remove `~/.config/opencode/command/` and `agent/` entries with `studio-` prefix, or `rm -rf ~/.config/opencode/{command,agent}/studio-*`.
+remove `~/.config/opencode/command/` and `agent/` entries with `atelier-` prefix, or `rm -rf ~/.config/opencode/{command,agent}/atelier-*`.

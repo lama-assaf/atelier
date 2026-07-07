@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# install STUDIO as codex AGENTS.md
+# install atelier as codex AGENTS.md
 set -e
 
 SCOPE="user"
@@ -11,7 +11,7 @@ while [[ $# -gt 0 ]]; do
   esac
 done
 
-STUDIO_ROOT="$(cd "$(dirname "$0")/../.." && pwd)"
+ATELIER_ROOT="$(cd "$(dirname "$0")/../.." && pwd)"
 
 if [ "$SCOPE" = "user" ]; then
   TARGET_DIR="$HOME/.codex"
@@ -23,29 +23,29 @@ mkdir -p "$TARGET_DIR"
 TARGET="$TARGET_DIR/AGENTS.md"
 
 cat > "$TARGET" << EOF
-# AGENTS.md (STUDIO)
+# AGENTS.md (atelier)
 
-this project uses STUDIO for design, product, and brand work. STUDIO source: $STUDIO_ROOT
+this project uses atelier for design, product, and brand work. atelier source: $ATELIER_ROOT
 
 ## principles (always apply)
 
-$(cat "$STUDIO_ROOT/rules/common/principles.md")
+$(cat "$ATELIER_ROOT/rules/common/principles.md")
 
 ## banned words
 
-$(cat "$STUDIO_ROOT/rules/brand/banned-words.md")
+$(cat "$ATELIER_ROOT/rules/brand/banned-words.md")
 
 ## anti-ai tone
 
-$(cat "$STUDIO_ROOT/rules/copy/anti-ai-tone.md")
+$(cat "$ATELIER_ROOT/rules/copy/anti-ai-tone.md")
 
 ## active voice
 
-$(cat "$STUDIO_ROOT/rules/copy/active-voice.md")
+$(cat "$ATELIER_ROOT/rules/copy/active-voice.md")
 
 ## available skills
 
-invoke by name. each skill has its own workflow at $STUDIO_ROOT/skills/<name>/SKILL.md:
+invoke by name. each skill has its own workflow at $ATELIER_ROOT/skills/<name>/SKILL.md:
 
 - design-review, design-system-audit, accessibility-audit, figma-handoff-spec, component-spec, motion-direction, responsive-rules, dark-mode-pairing, iconography-system, data-viz-design
 - prd-writing, spec-writing, research-synthesis, jtbd-framing, roadmap-planning, feature-scoping, metric-design, ab-test-design, competitive-analysis, launch-planning
@@ -53,7 +53,7 @@ invoke by name. each skill has its own workflow at $STUDIO_ROOT/skills/<name>/SK
 
 ## agents (roles)
 
-ask codex to act as one of these specialists when relevant. full definitions in $STUDIO_ROOT/agents/:
+ask codex to act as one of these specialists when relevant. full definitions in $ATELIER_ROOT/agents/:
 
 - design-reviewer, design-system-auditor, accessibility-reviewer
 - brand-voice-keeper, copywriter, microcopy-writer
@@ -63,7 +63,7 @@ ask codex to act as one of these specialists when relevant. full definitions in 
 
 ## reference
 
-full source of truth: $STUDIO_ROOT
+full source of truth: $ATELIER_ROOT
 EOF
 
-echo "STUDIO codex adapter installed at $TARGET"
+echo "atelier codex adapter installed at $TARGET"

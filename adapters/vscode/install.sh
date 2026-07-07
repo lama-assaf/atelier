@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# install STUDIO as github copilot instructions
+# install atelier as github copilot instructions
 set -e
 
 SCOPE="project"
@@ -11,7 +11,7 @@ while [[ $# -gt 0 ]]; do
   esac
 done
 
-STUDIO_ROOT="$(cd "$(dirname "$0")/../.." && pwd)"
+ATELIER_ROOT="$(cd "$(dirname "$0")/../.." && pwd)"
 
 if [ "$SCOPE" = "user" ]; then
   if [[ "$OSTYPE" == "darwin"* ]]; then
@@ -27,28 +27,28 @@ mkdir -p "$TARGET_DIR"
 TARGET="$TARGET_DIR/copilot-instructions.md"
 
 cat > "$TARGET" << EOF
-# copilot instructions (STUDIO)
+# copilot instructions (atelier)
 
-this project uses STUDIO. when writing code, documentation, prd, or copy, follow these rules.
+this project uses atelier. when writing code, documentation, prd, or copy, follow these rules.
 
 ## principles
-$(cat "$STUDIO_ROOT/rules/common/principles.md")
+$(cat "$ATELIER_ROOT/rules/common/principles.md")
 
 ## banned ai-tone phrases (never use)
-$(cat "$STUDIO_ROOT/rules/brand/banned-words.md")
+$(cat "$ATELIER_ROOT/rules/brand/banned-words.md")
 
 ## prose rules
-$(cat "$STUDIO_ROOT/rules/copy/anti-ai-tone.md")
+$(cat "$ATELIER_ROOT/rules/copy/anti-ai-tone.md")
 
 ## design constraints (when writing CSS/styles)
-$(cat "$STUDIO_ROOT/rules/design/spacing.md")
-$(cat "$STUDIO_ROOT/rules/design/type.md")
-$(cat "$STUDIO_ROOT/rules/design/color.md")
+$(cat "$ATELIER_ROOT/rules/design/spacing.md")
+$(cat "$ATELIER_ROOT/rules/design/type.md")
+$(cat "$ATELIER_ROOT/rules/design/color.md")
 
 ## reference
 
-full STUDIO source: $STUDIO_ROOT
+full atelier source: $ATELIER_ROOT
 when you need a skill or agent definition, read from there.
 EOF
 
-echo "STUDIO copilot instructions installed at $TARGET"
+echo "atelier copilot instructions installed at $TARGET"

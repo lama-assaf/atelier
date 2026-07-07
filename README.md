@@ -7,7 +7,7 @@ harness-native operator system for design, product and brand work.
 agents, skills, hooks, rules and commands for ai coding agents like claude code, cursor, codex, opencode, gemini cli, zed, and vscode + copilot. one source of truth in markdown, six adapters for the rest. MIT licensed, free for everyone, designed to be edited freely.
 
 ```
-studio/
+atelier/
 ├── agents/           15 specialist agents
 ├── skills/           33 skills across design, product, brand
 ├── commands/         29 slash commands
@@ -93,7 +93,7 @@ deploy: push to github, enable github pages serving from `docs/` on main.
 
 ### log viewer
 
-inspect what STUDIO surfaced and what got written.
+inspect what atelier surfaced and what got written.
 
 ```bash
 npm run logs                                    # today's activations
@@ -115,7 +115,7 @@ node scripts/util/check-references.js --strict   # exit 1 on findings
 
 cursor (.mdc rules), codex (AGENTS.md), opencode (commands + agents + opencode.json), gemini cli (GEMINI.md + @-imports), zed (agent profile), vscode + github copilot (.github/copilot-instructions.md).
 
-each adapter has its own `install.sh`. run from STUDIO root:
+each adapter has its own `install.sh`. run from the atelier root:
 
 ```bash
 ./adapters/cursor/install.sh           # user-scope
@@ -160,7 +160,7 @@ MIT. see LICENSE.
 
 ## disclaimer
 
-see DISCLAIMER.md. opinions in agents and skills are starting points; override them when context demands it. content generated through STUDIO is the responsibility of the operator running the harness.
+see DISCLAIMER.md. opinions in agents and skills are starting points; override them when context demands it. content generated through atelier is the responsibility of the operator running the harness.
 
 ## author
 
@@ -177,24 +177,24 @@ full contributor list lives on the GitHub [contributors page](https://github.com
 
 ## status: experimental — DYOR
 
-STUDIO is **early-stage, experimental software**. session 3 ships a dashboard, log viewer, reference checker, three new skills/commands, and a docs page; sessions 4–5 are unfinished. interfaces, agent contracts, skill descriptions, rule formats, hook signatures, adapter layouts, dashboard scripts, and install scripts may change without notice and without migration paths.
+atelier is **early-stage, experimental software**. session 3 ships a dashboard, log viewer, reference checker, three new skills/commands, and a docs page; sessions 4–5 are unfinished. interfaces, agent contracts, skill descriptions, rule formats, hook signatures, adapter layouts, dashboard scripts, and install scripts may change without notice and without migration paths.
 
-**do your own research (DYOR)** before relying on STUDIO for anything that matters:
+**do your own research (DYOR)** before relying on atelier for anything that matters:
 
 - read every agent, skill, rule, hook, and dashboard script before running them. they encode opinions and they execute on your machine.
 - review every output before shipping it. agents and skills will be wrong sometimes.
 - validate generated copy, prds, audits, scopes, brand identities, content calendars, email sequences, and recommendations against your own context, audience, and legal/compliance requirements.
-- treat anything STUDIO produces as a draft, not a deliverable.
+- treat anything atelier produces as a draft, not a deliverable.
 - audit the hook scripts under `scripts/hooks/`, dashboard scripts under `scripts/dashboard/`, and each adapter's `install.sh` before running them — they execute locally, read prompts, write logs, and modify your harness config.
 
-**no warranty.** STUDIO is provided "as is" under the MIT license. there is no guarantee of accuracy, originality, fitness for any purpose, security, or availability. the author and contributors accept no liability for losses, damages, missed deadlines, brand harm, leaked information, or any other consequence arising from use of this repo.
+**no warranty.** atelier is provided "as is" under the MIT license. there is no guarantee of accuracy, originality, fitness for any purpose, security, or availability. the author and contributors accept no liability for losses, damages, missed deadlines, brand harm, leaked information, or any other consequence arising from use of this repo.
 
-**not professional advice.** nothing in STUDIO constitutes legal, financial, medical, security, accessibility-compliance, or other professional advice. accessibility audits, brand guidance, product specs, content calendars, email sequences, and copy reviews here are starting points — not substitutes for qualified review.
+**not professional advice.** nothing in atelier constitutes legal, financial, medical, security, accessibility-compliance, or other professional advice. accessibility audits, brand guidance, product specs, content calendars, email sequences, and copy reviews here are starting points — not substitutes for qualified review.
 
-**operator owns the output.** content generated through STUDIO via any harness (claude code, cursor, codex, opencode, gemini, zed, vscode, etc.) is the responsibility of the operator running the harness, not the author of STUDIO.
+**operator owns the output.** content generated through atelier via any harness (claude code, cursor, codex, opencode, gemini, zed, vscode, etc.) is the responsibility of the operator running the harness, not the author of atelier.
 
-**no affiliation.** STUDIO is not affiliated with, endorsed by, or sponsored by Anthropic, Cursor, OpenAI, Google, Zed Industries, GitHub/Microsoft, Figma, Notion, Linear, PostHog, or any other company referenced in agents, skills, adapters, examples, or docs. all trademarks belong to their respective owners.
+**no affiliation.** atelier is not affiliated with, endorsed by, or sponsored by Anthropic, Cursor, OpenAI, Google, Zed Industries, GitHub/Microsoft, Figma, Notion, Linear, PostHog, or any other company referenced in agents, skills, adapters, examples, or docs. all trademarks belong to their respective owners.
 
-if any of this is a problem for your use case, do not install STUDIO. fork it, audit it, or wait for a stable release.
+if any of this is a problem for your use case, do not install atelier. fork it, audit it, or wait for a stable release.
 
 see [DISCLAIMER.md](DISCLAIMER.md) for the long form.

@@ -1,6 +1,6 @@
 # mcp configs
 
-mcp (model context protocol) server templates for the tools STUDIO most commonly references.
+mcp (model context protocol) server templates for the tools atelier most commonly references.
 
 ## quick start
 
@@ -22,7 +22,7 @@ with the plugin; every server is opt-in per project.
 | notion | notion pages, databases, search | npm: @notionhq/notion-mcp-server |
 | linear-remote | linear via remote endpoint | mcp.linear.app |
 | posthog | analytics events, dashboards | npm: @posthog/mcp |
-| filesystem | sandboxed file access for studio self-inspection | npm: @modelcontextprotocol/server-filesystem |
+| filesystem | sandboxed file access for atelier self-inspection | npm: @modelcontextprotocol/server-filesystem |
 
 these are **templates**. registry urls, package names, and auth schemes change. always cross-check against the upstream docs before depending on them.
 

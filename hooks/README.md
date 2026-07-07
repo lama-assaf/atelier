@@ -1,12 +1,12 @@
 # hooks
 
-three claude code hooks ship with STUDIO. all are non-blocking by default.
+three claude code hooks ship with atelier. all are non-blocking by default.
 
 ## what each does
 
 ### prompt-context.js (UserPromptSubmit)
 
-inspects the user's prompt for studio-relevant keywords and surfaces the matching skill/rule files as additional context to the model. matches things like "design review", "prd", "brand voice", "naming", "a11y".
+inspects the user's prompt for atelier-relevant keywords and surfaces the matching skill/rule files as additional context to the model. matches things like "design review", "prd", "brand voice", "naming", "a11y".
 
 - silent when no keywords match
 - silent when too many match (over 6, signals noisy prompt)

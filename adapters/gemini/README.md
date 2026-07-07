@@ -4,8 +4,8 @@ gemini cli reads GEMINI.md files in the project (and home) and supports @-import
 
 ## what this adapter installs
 
-- `~/.gemini/GEMINI.md` (or project-local) that imports STUDIO modules via @-syntax
-- `~/.gemini/studio/` containing the STUDIO files referenced
+- `~/.gemini/GEMINI.md` (or project-local) that imports atelier modules via @-syntax
+- `~/.gemini/atelier/` containing the atelier files referenced
 
 ## install
 
@@ -21,11 +21,11 @@ or project-local:
 
 ## limitations
 
-- gemini cli has no slash-command system at parity with claude code; STUDIO commands are described as patterns
+- gemini cli has no slash-command system at parity with claude code; atelier commands are described as patterns
 - no subagents
 - no hooks
-- @-imports are loaded eagerly; large STUDIO context will consume tokens
+- @-imports are loaded eagerly; large atelier context will consume tokens
 
 ## uninstall
 
-delete `~/.gemini/studio/` and remove the @-imports from your `GEMINI.md`.
+delete `~/.gemini/atelier/` and remove the @-imports from your `GEMINI.md`.

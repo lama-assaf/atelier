@@ -485,11 +485,11 @@ const { findBannedTone, checkRhythm, scanText, checkEmDashFiller } = require(pat
 }
 
 // ============================================================
-// 12. README + STUDIO.md + SOUL.md substantive
+// 12. README + ATELIER.md + SOUL.md substantive
 // ============================================================
 section('docs');
 
-for (const doc of ['README.md', 'STUDIO.md', 'SOUL.md', 'DISCLAIMER.md', 'LICENSE', 'CHANGELOG.md']) {
+for (const doc of ['README.md', 'ATELIER.md', 'SOUL.md', 'DISCLAIMER.md', 'LICENSE', 'CHANGELOG.md']) {
   const p = path.join(ROOT, doc);
   if (fs.existsSync(p)) {
     const len = fs.statSync(p).size;
@@ -520,7 +520,7 @@ section('reference integrity');
 section('dashboard build');
 
 {
-  const tmpOut = '/tmp/studio-dashboard-test-' + Date.now();
+  const tmpOut = '/tmp/atelier-dashboard-test-' + Date.now();
   const r = spawnSync('node', [path.join(ROOT, 'scripts/dashboard/build.js'), '--out', tmpOut], { encoding: 'utf-8' });
   if (r.status === 0) {
     ok('build.js: exits clean');
@@ -556,7 +556,7 @@ section('dashboard build');
 section('log viewer');
 
 {
-  const tmpLog = '/tmp/studio-log-viewer-test-' + Date.now();
+  const tmpLog = '/tmp/atelier-log-viewer-test-' + Date.now();
   fs.mkdirSync(tmpLog, { recursive: true });
   // log-viewer should handle empty log dir gracefully
   const r = spawnSync('node', [path.join(ROOT, 'scripts/dashboard/log-viewer.js')], {
@@ -571,7 +571,7 @@ section('log viewer');
     encoding: 'utf-8',
     env: { ...process.env, ATELIER_LOG_DIR: tmpLog },
   });
-  if (r2.status === 0 && r2.stdout.includes('STUDIO log viewer')) ok('log-viewer: --help works');
+  if (r2.status === 0 && r2.stdout.includes('atelier log viewer')) ok('log-viewer: --help works');
   else err('log-viewer --help', `status=${r2.status}`);
 
   fs.rmSync(tmpLog, { recursive: true, force: true });

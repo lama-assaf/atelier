@@ -1,4 +1,4 @@
-# STUDIO installer for windows
+# atelier installer for windows
 param(
     [string]$Target = "claude",
     [string]$Rules = "all",
@@ -7,10 +7,10 @@ param(
 )
 
 $ErrorActionPreference = "Stop"
-$StudioRoot = $PSScriptRoot
+$AtelierRoot = $PSScriptRoot
 
-Write-Host "STUDIO installer"
-Write-Host "  source:   $StudioRoot"
+Write-Host "atelier installer"
+Write-Host "  source:   $AtelierRoot"
 Write-Host "  target:   $Target"
 Write-Host "  rules:    $Rules"
 Write-Host "  hooks:    $(if ($NoHooks) { 'no' } else { 'yes' })"
@@ -21,20 +21,20 @@ if ($Target -eq "claude") {
     $ClaudeDir = Join-Path $env:USERPROFILE ".claude"
     if (-not (Test-Path $ClaudeDir)) { New-Item -ItemType Directory -Path $ClaudeDir | Out-Null }
 
-    $LinkTarget = Join-Path $ClaudeDir "studio"
+    $LinkTarget = Join-Path $ClaudeDir "atelier"
     if (-not (Test-Path $LinkTarget)) {
-        New-Item -ItemType Junction -Path $LinkTarget -Target $StudioRoot | Out-Null
-        Write-Host "linked $LinkTarget -> $StudioRoot"
+        New-Item -ItemType Junction -Path $LinkTarget -Target $AtelierRoot | Out-Null
+        Write-Host "linked $LinkTarget -> $AtelierRoot"
     } else {
         Write-Host "$LinkTarget already exists (skipping)"
     }
 
     if (-not $NoHooks) {
-        $HooksTemplate = Join-Path $StudioRoot "hooks\hooks.json"
-        $Generated = Join-Path $ClaudeDir "studio-hooks.json"
+        $HooksTemplate = Join-Path $AtelierRoot "hooks\hooks.json"
+        $Generated = Join-Path $ClaudeDir "atelier-hooks.json"
         # hooks.json ships with ${CLAUDE_PLUGIN_ROOT} for the claude code plugin loader; this
         # manual installer substitutes it (and any legacy ${STUDIO_ROOT}) with the local install path.
-        $ResolvedRoot = $StudioRoot.Replace('\','/')
+        $ResolvedRoot = $AtelierRoot.Replace('\','/')
         (Get-Content $HooksTemplate -Raw) -replace '\$\{CLAUDE_PLUGIN_ROOT\}', $ResolvedRoot -replace '\$\{STUDIO_ROOT\}', $ResolvedRoot | Set-Content $Generated
         Write-Host "wrote $Generated"
         Write-Host "next: merge the hooks key into $ClaudeDir\settings.json"
@@ -46,7 +46,7 @@ if ($WithAdapters) {
     Write-Host "note: adapter install scripts are bash. on windows, run them under WSL or git-bash:"
     foreach ($a in $WithAdapters.Split(',')) {
         $a = $a.Trim()
-        $script = Join-Path $StudioRoot "adapters\$a\install.sh"
+        $script = Join-Path $AtelierRoot "adapters\$a\install.sh"
         if (Test-Path $script) {
             Write-Host "  bash '$script'"
         } else {
@@ -56,5 +56,5 @@ if ($WithAdapters) {
 }
 
 Write-Host ""
-Write-Host "STUDIO installed."
-Write-Host "see $StudioRoot\STUDIO.md for the operator handbook."
+Write-Host "atelier installed."
+Write-Host "see $AtelierRoot\ATELIER.md for the operator handbook."

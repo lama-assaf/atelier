@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // thin wrapper that delegates to the platform-appropriate installer.
-// run via: npx studio-universal --target claude --with-adapters cursor
+// run via: npx atelier-universal --target claude --with-adapters cursor
 //
 // on unix: exec install.sh with passed args
 // on windows: print instructions to run install.ps1

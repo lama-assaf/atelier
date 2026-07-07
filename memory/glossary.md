@@ -1,13 +1,13 @@
 # glossary
 
-team-specific terminology. overrides STUDIO defaults when there's a conflict.
+team-specific terminology. overrides atelier defaults when there's a conflict.
 
 format:
 
 ```
 term: definition
 
-(optional) replaces: what STUDIO would call this by default
+(optional) replaces: what atelier would call this by default
 ```
 
 ---
@@ -20,7 +20,7 @@ term: definition
 
 **workspace**: the top-level container in our product. claude code uses "project" for something similar; in our product, it's "workspace".
 
-**rollup**: an aggregated view of metrics across teams. STUDIO's release-narrative skill calls this an "executive summary" by default. for us, it's a rollup.
+**rollup**: an aggregated view of metrics across teams. atelier's release-narrative skill calls this an "executive summary" by default. for us, it's a rollup.
 
 ---
 

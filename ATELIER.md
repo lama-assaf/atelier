@@ -1,10 +1,10 @@
-# atelier (STUDIO fork)
+# atelier (atelier fork)
 
-operator handbook. read this once before using STUDIO seriously.
+operator handbook. read this once before using atelier seriously.
 
 ## what this is
 
-STUDIO is a system, not a library. it has a point of view about how design, product and brand work should be done. installing it imports that point of view into your harness.
+atelier is a system, not a library. it has a point of view about how design, product and brand work should be done. installing it imports that point of view into your harness.
 
 the point of view shows up in three places:
 
@@ -12,7 +12,7 @@ the point of view shows up in three places:
 - **skills** install workflows that have been thought through, not one-shot prompts
 - **rules** hold consistent across every output, project after project
 
-if any part of this point of view conflicts with how your team works, override it. STUDIO is opinionated; it isn't dogmatic.
+if any part of this point of view conflicts with how your team works, override it. atelier is opinionated; it isn't dogmatic.
 
 ## the three lanes
 
@@ -28,7 +28,7 @@ most agents and skills sit in one lane. some span lanes (e.g. landing-copy is br
 
 ## the operator loop
 
-at any moment, STUDIO supports one of these moves:
+at any moment, atelier supports one of these moves:
 
 1. **review** — critique an existing artifact (design, copy, prd)
 2. **build** — create a new artifact from a brief
@@ -37,7 +37,7 @@ at any moment, STUDIO supports one of these moves:
 
 every command and skill maps to one of these. when you're stuck, name the move you want to make and pick the matching tool.
 
-## how to invoke STUDIO
+## how to invoke atelier
 
 ### a. commands (fastest)
 
@@ -78,13 +78,13 @@ if you need a quick critique, use a command.
 if you need sustained work, invoke an agent.
 if you want the rules to influence whatever you're doing, don't invoke anything; the rules are already loaded.
 
-## what STUDIO doesn't do
+## what atelier doesn't do
 
 - **make decisions for you**. it surfaces tradeoffs and writes structured outputs. the call is still yours.
-- **guarantee taste**. STUDIO can run an accessibility audit perfectly and still produce a boring design.
-- **replace your judgment about your audience**. STUDIO has principles. your audience has context. when they conflict, your audience wins.
+- **guarantee taste**. atelier can run an accessibility audit perfectly and still produce a boring design.
+- **replace your judgment about your audience**. atelier has principles. your audience has context. when they conflict, your audience wins.
 - **substitute for a brand voice guide you haven't written**. the brand-voice-keeper needs a voice to keep. without one, it can flag generic ai-tone markers but it can't enforce a specific voice.
-- **replace research**. STUDIO can synthesize research; it can't go talk to your users.
+- **replace research**. atelier can synthesize research; it can't go talk to your users.
 
 ## installation profiles
 
@@ -103,22 +103,22 @@ select on install:
 
 ## customizing
 
-STUDIO is yours. every file is markdown. edit them.
+atelier is yours. every file is markdown. edit them.
 
 common customizations:
 
 - add your banned words to `rules/brand/banned-words.md`
 - change spacing tokens in `rules/design/spacing.md`
 - replace example metrics in `rules/product/metrics.md` with your team's
-- add your own agents next to STUDIO's agents
+- add your own agents next to atelier's agents
 
-if you want STUDIO's defaults preserved but your team's overrides on top, fork the repo or layer your changes in a separate directory and load both.
+if you want atelier's defaults preserved but your team's overrides on top, fork the repo or layer your changes in a separate directory and load both.
 
-## conflicts between STUDIO and your project
+## conflicts between atelier and your project
 
-project rules win. always. STUDIO is a default; your project knows context STUDIO doesn't.
+project rules win. always. atelier is a default; your project knows context atelier doesn't.
 
-if a STUDIO rule keeps conflicting with how your team works, change the rule. STUDIO is editable, not sacred.
+if a atelier rule keeps conflicting with how your team works, change the rule. atelier is editable, not sacred.
 
 ## what's coming
 

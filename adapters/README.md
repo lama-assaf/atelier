@@ -1,6 +1,6 @@
 # adapters
 
-STUDIO is built around claude code's plugin format (agents, skills, hooks, rules, commands). these adapters port the same content to other harnesses so you can use STUDIO inside cursor, codex, opencode, gemini cli, zed, and vscode/copilot.
+atelier is built around claude code's plugin format (agents, skills, hooks, rules, commands). these adapters port the same content to other harnesses so you can use atelier inside cursor, codex, opencode, gemini cli, zed, and vscode/copilot.
 
 ## what each adapter provides
 
@@ -18,7 +18,7 @@ each subdir has its own README with install steps.
 
 ## the philosophy
 
-STUDIO's source of truth is the markdown in `agents/`, `skills/`, `rules/`, and `commands/`. adapters generate harness-specific configs that point at, reference, or include that content. when you update STUDIO, re-run the adapter generator to refresh derived configs.
+atelier's source of truth is the markdown in `agents/`, `skills/`, `rules/`, and `commands/`. adapters generate harness-specific configs that point at, reference, or include that content. when you update atelier, re-run the adapter generator to refresh derived configs.
 
 ## installing an adapter
 
@@ -29,8 +29,8 @@ cd adapters/<harness>
 ./install.sh
 ```
 
-most adapters install into your home dir or the current project, not into STUDIO itself.
+most adapters install into your home dir or the current project, not into atelier itself.
 
 ## limitations
 
-not every harness supports every STUDIO concept. cursor has no equivalent to subagents. gemini cli loads context via @-imports. opencode supports custom modes but not sub-agents in the claude code sense. each adapter README documents what's supported and what's approximated.
+not every harness supports every atelier concept. cursor has no equivalent to subagents. gemini cli loads context via @-imports. opencode supports custom modes but not sub-agents in the claude code sense. each adapter README documents what's supported and what's approximated.
