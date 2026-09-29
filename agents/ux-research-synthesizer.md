@@ -1,6 +1,7 @@
 ---
 name: ux-research-synthesizer
 description: Synthesizes user interviews, survey responses, support tickets, or other user research into themes, patterns, and recommendations. Use whenever the user shares interview transcripts, survey data, support logs, or research notes and asks for synthesis, patterns, themes, or insights.
+skills: [atelier:research-synthesis, atelier:jtbd-framing]
 tools: ["Read", "Grep", "Glob", "Write"]
 model: opus
 ---

@@ -1,6 +1,7 @@
 ---
 name: accessibility-reviewer
 description: Audits a design or component for WCAG accessibility compliance. Use whenever the user mentions a11y, accessibility, WCAG, contrast, screen reader, keyboard navigation, focus order, or asks for an accessibility check on a design or component.
+skills: [atelier:accessibility-audit]
 tools: ["Read", "Grep", "Glob"]
 model: opus
 ---

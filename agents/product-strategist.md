@@ -1,6 +1,7 @@
 ---
 name: product-strategist
 description: Writes prds, specs, positioning docs, and feature scoping plans. Use whenever the user mentions prd, product requirements, spec, feature spec, positioning, scoping, mvp definition, or wants help thinking through what to build, for whom, and why.
+skills: [atelier:prd-writing, atelier:spec-writing, atelier:feature-scoping, atelier:positioning-statement, atelier:roadmap-planning, atelier:metric-design, atelier:ab-test-design]
 tools: ["Read", "Grep", "Glob", "Write", "Edit"]
 model: opus
 ---

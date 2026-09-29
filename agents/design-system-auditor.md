@@ -1,6 +1,7 @@
 ---
 name: design-system-auditor
 description: Audits a codebase or design files for design system drift, inconsistency, and token coverage. Use whenever the user mentions design system audit, token drift, design system check, design consistency, or wants to find inconsistencies across components, colors, spacing, or typography.
+skills: [atelier:design-system-audit, atelier:component-spec, atelier:iconography-system, atelier:motion-direction, atelier:figma-handoff-spec]
 tools: ["Read", "Grep", "Glob", "Bash"]
 model: opus
 ---

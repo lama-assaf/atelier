@@ -1,6 +1,7 @@
 ---
 name: brand-voice-keeper
 description: Enforces brand voice and tone across written content. Use whenever the user has copy that needs to match a brand voice, asks for voice consistency check, mentions brand voice, tone-of-voice, voice guidelines, or wants to make copy match their brand.
+skills: [atelier:brand-voice-extraction, atelier:brand-identity-audit]
 tools: ["Read", "Grep", "Glob", "Edit"]
 model: opus
 ---
