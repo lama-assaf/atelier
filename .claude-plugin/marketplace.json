@@ -21,6 +21,36 @@
         "repo": "lama-assaf/salon"
       },
       "description": "social campaign operator: strategy, platform-native content, engagement and comment playbooks for X, LinkedIn, Discord and Telegram"
+    },
+    {
+      "name": "craft",
+      "source": {
+        "source": "git-subdir",
+        "url": "lama-assaf/creative-genius",
+        "path": "plugins/craft",
+        "ref": "v3.0.0"
+      },
+      "description": "interface craft for real ui code: audit, fix and polish layout, color, type, motion and accessibility, export design tokens, plus the autointerface and autonegotiate pipelines (from creative-genius)"
+    },
+    {
+      "name": "brand",
+      "source": {
+        "source": "git-subdir",
+        "url": "lama-assaf/creative-genius",
+        "path": "plugins/brand",
+        "ref": "v3.0.0"
+      },
+      "description": "brand as a system agents can read: brand genome, soul file, red lines, visual identity, narrative and drift tracking, plus the autobrand pipeline (from creative-genius)"
+    },
+    {
+      "name": "taste",
+      "source": {
+        "source": "git-subdir",
+        "url": "lama-assaf/creative-genius",
+        "path": "plugins/taste",
+        "ref": "v3.0.0"
+      },
+      "description": "design taste: capture a taste profile, review work against a taste rubric, set an aesthetic direction, and run the autotaste learning loop (from creative-genius)"
     }
   ]
 }
