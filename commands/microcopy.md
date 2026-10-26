@@ -1,6 +1,7 @@
 ---
 name: microcopy
 description: write ui microcopy including buttons, errors, empty states, forms
+disable-model-invocation: true
 ---
 
 # /microcopy

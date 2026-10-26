@@ -1,6 +1,7 @@
 ---
 name: landing
 description: write landing page copy
+disable-model-invocation: true
 ---
 
 # /landing

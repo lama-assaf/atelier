@@ -1,6 +1,7 @@
 ---
 name: voice-extract
 description: extract a brand voice guide from existing copy samples
+disable-model-invocation: true
 ---
 
 # /voice-extract

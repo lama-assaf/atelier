@@ -1,6 +1,7 @@
 ---
 name: brand-identity
 description: audit a brand's full identity across logo, type, color, voice, and visual language
+disable-model-invocation: true
 ---
 
 # /brand-identity

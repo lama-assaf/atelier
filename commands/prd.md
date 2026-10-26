@@ -1,6 +1,7 @@
 ---
 name: prd
 description: write a product requirements document
+disable-model-invocation: true
 ---
 
 # /prd

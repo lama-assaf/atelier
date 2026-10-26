@@ -1,6 +1,7 @@
 ---
 name: roadmap
 description: plan a product roadmap with themes, bets, and sequencing
+disable-model-invocation: true
 ---
 
 # /roadmap

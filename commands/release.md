@@ -1,6 +1,7 @@
 ---
 name: release
 description: write release notes
+disable-model-invocation: true
 ---
 
 # /release

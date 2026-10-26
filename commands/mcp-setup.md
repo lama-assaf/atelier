@@ -1,6 +1,7 @@
 ---
 name: mcp-setup
 description: enable optional MCP servers (figma, notion, linear, posthog, filesystem) for this project
+disable-model-invocation: true
 ---
 
 # /mcp-setup

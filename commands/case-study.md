@@ -1,6 +1,7 @@
 ---
 name: case-study
 description: write a customer case study
+disable-model-invocation: true
 ---
 
 # /case-study

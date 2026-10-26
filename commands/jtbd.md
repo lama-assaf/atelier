@@ -1,6 +1,7 @@
 ---
 name: jtbd
 description: frame a user need using jobs-to-be-done
+disable-model-invocation: true
 ---
 
 # /jtbd

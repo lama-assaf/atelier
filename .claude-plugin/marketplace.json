@@ -26,7 +26,7 @@
       "name": "craft",
       "source": {
         "source": "git-subdir",
-        "url": "lama-assaf/creative-genius",
+        "url": "https://github.com/lama-assaf/creative-genius.git",
         "path": "plugins/craft",
         "ref": "v3.0.1"
       },
@@ -36,7 +36,7 @@
       "name": "brand",
       "source": {
         "source": "git-subdir",
-        "url": "lama-assaf/creative-genius",
+        "url": "https://github.com/lama-assaf/creative-genius.git",
         "path": "plugins/brand",
         "ref": "v3.0.1"
       },
@@ -46,7 +46,7 @@
       "name": "taste",
       "source": {
         "source": "git-subdir",
-        "url": "lama-assaf/creative-genius",
+        "url": "https://github.com/lama-assaf/creative-genius.git",
         "path": "plugins/taste",
         "ref": "v3.0.1"
       },

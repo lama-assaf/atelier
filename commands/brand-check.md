@@ -1,6 +1,7 @@
 ---
 name: brand-check
 description: check copy against a brand voice guide
+disable-model-invocation: true
 ---
 
 # /brand-check

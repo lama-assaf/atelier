@@ -1,6 +1,7 @@
 ---
 name: tagline
 description: write taglines and headlines
+disable-model-invocation: true
 ---
 
 # /tagline

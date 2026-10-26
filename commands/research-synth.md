@@ -1,6 +1,7 @@
 ---
 name: research-synth
 description: synthesize user research into themes and recommendations
+disable-model-invocation: true
 ---
 
 # /research-synth

@@ -1,6 +1,7 @@
 ---
 name: content-calendar
 description: plan a content calendar tied to goals, audiences, and channels
+disable-model-invocation: true
 ---
 
 # /content-calendar

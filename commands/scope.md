@@ -1,6 +1,7 @@
 ---
 name: scope
 description: scope a feature to its smallest valuable shape
+disable-model-invocation: true
 ---
 
 # /scope

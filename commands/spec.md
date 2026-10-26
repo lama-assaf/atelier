@@ -1,6 +1,7 @@
 ---
 name: spec
 description: write a feature or technical specification
+disable-model-invocation: true
 ---
 
 # /spec

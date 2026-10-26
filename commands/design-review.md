@@ -1,6 +1,7 @@
 ---
 name: design-review
 description: run a structured critique on a design
+disable-model-invocation: true
 ---
 
 # /design-review

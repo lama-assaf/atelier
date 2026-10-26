@@ -1,6 +1,7 @@
 ---
 name: value-prop
 description: write a value proposition
+disable-model-invocation: true
 ---
 
 # /value-prop

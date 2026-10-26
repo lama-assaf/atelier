@@ -2,6 +2,16 @@
 
 # changelog
 
+## atelier 0.3.0
+
+### changed
+
+- **commands are typed, not picked.** the 32 files in `commands/` now set `disable-model-invocation: true`. each one wraps a skill that claude already picks from its description (`/prd` wraps `prd-writing`), so the skill listing carried both. with all five marketplace plugins installed, the listing measured 9.9k tokens against a budget of about 10k on a 1m context window, and 14 skills reached claude as bare names, including `taste:profile` and `taste:review`. with these commands and salon's 14 hidden it measures 9.1k, and all 75 skills keep their descriptions. you can still type `/prd` and the rest.
+
+### fixed
+
+- craft, brand and taste failed to install with "repository not found". their `git-subdir` url was the `lama-assaf/creative-genius` shorthand, which claude code clones over ssh. it is now the https url, so git uses your github credentials. creative-genius is a private repo, so installing these three still needs read access to it.
+
 ## atelier 0.2.0
 
 ### changed

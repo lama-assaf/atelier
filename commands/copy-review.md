@@ -1,6 +1,7 @@
 ---
 name: copy-review
 description: review copy for voice, rhythm, and clarity
+disable-model-invocation: true
 ---
 
 # /copy-review

@@ -1,6 +1,7 @@
 ---
 name: messaging
 description: build a messaging architecture with hero, pillars, and proof
+disable-model-invocation: true
 ---
 
 # /messaging

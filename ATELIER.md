@@ -52,7 +52,7 @@ slash commands are the entry points designed for quick invocation:
 /a11y-scan
 ```
 
-these trigger specific skills with their default workflows.
+these trigger specific skills with their default workflows. you type them; claude doesn't run them on its own. it picks the skills underneath from their descriptions.
 
 ### b. agents (deeper context)
 

@@ -1,6 +1,7 @@
 ---
 name: position
 description: write a positioning statement
+disable-model-invocation: true
 ---
 
 # /position

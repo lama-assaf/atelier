@@ -1,6 +1,7 @@
 ---
 name: launch
 description: plan a product or feature launch
+disable-model-invocation: true
 ---
 
 # /launch

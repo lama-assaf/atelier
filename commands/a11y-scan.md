@@ -1,6 +1,7 @@
 ---
 name: a11y-scan
 description: audit a design or component for WCAG accessibility
+disable-model-invocation: true
 ---
 
 # /a11y-scan

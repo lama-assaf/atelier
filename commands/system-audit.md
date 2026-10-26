@@ -1,6 +1,7 @@
 ---
 name: system-audit
 description: audit a codebase or design files for design system drift
+disable-model-invocation: true
 ---
 
 # /system-audit

@@ -1,6 +1,7 @@
 ---
 name: competitor
 description: research and analyze competitors
+disable-model-invocation: true
 ---
 
 # /competitor

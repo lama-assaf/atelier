@@ -1,6 +1,7 @@
 ---
 name: name
 description: generate name candidates for a product, feature, company, or brand
+disable-model-invocation: true
 ---
 
 # /name

@@ -1,6 +1,6 @@
 {
   "name": "atelier",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "harness-native operator system for design, product and brand work",
   "main": "scripts/install.js",
   "bin": {

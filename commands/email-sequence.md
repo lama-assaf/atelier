@@ -1,6 +1,7 @@
 ---
 name: email-sequence
 description: write multi-email sequences for onboarding, nurture, sales, lifecycle, or launch
+disable-model-invocation: true
 ---
 
 # /email-sequence

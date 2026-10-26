@@ -1,6 +1,7 @@
 ---
 name: metrics
 description: design product metrics including primary, secondary, and guardrails
+disable-model-invocation: true
 ---
 
 # /metrics

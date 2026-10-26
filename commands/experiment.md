@@ -1,6 +1,7 @@
 ---
 name: experiment
 description: design an a/b test or experiment
+disable-model-invocation: true
 ---
 
 # /experiment

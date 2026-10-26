@@ -1,6 +1,7 @@
 ---
 name: memory-init
 description: seed per-project atelier memory (.atelier/memory/) in the current project
+disable-model-invocation: true
 ---
 
 # /memory-init

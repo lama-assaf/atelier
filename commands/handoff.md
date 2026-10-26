@@ -1,6 +1,7 @@
 ---
 name: handoff
 description: generate a developer handoff spec from a design
+disable-model-invocation: true
 ---
 
 # /handoff
