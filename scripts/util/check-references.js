@@ -3,7 +3,6 @@
 // scan atelier source for broken cross-references and orphaned files.
 //
 // detects:
-//   - skill referenced in prompt-context.js but doesn't exist on disk
 //   - rule referenced but doesn't exist
 //   - skill/agent/command/rule referenced in another markdown by relative path that doesn't resolve
 //   - skill that no command, agent, or hook references (orphan)
@@ -71,24 +70,7 @@ function flag(severity, file, message) {
 }
 
 // ============================================================
-// 1. prompt-context KEYWORDS map -> files on disk
-// ============================================================
-
-const promptContextPath = path.join(ROOT, 'scripts/hooks/prompt-context.js');
-if (fs.existsSync(promptContextPath)) {
-  const src = fs.readFileSync(promptContextPath, 'utf-8');
-  const refs = [...src.matchAll(/'(skills\/[a-z-]+\/SKILL\.md|rules\/[a-z\/-]+\.md|memory\/[a-z]+\.md)'/g)].map((m) => m[1]);
-  const uniqueRefs = [...new Set(refs)];
-  for (const r of uniqueRefs) {
-    const full = path.join(ROOT, r);
-    if (!fs.existsSync(full)) {
-      flag('error', promptContextPath, `references "${r}" which does not exist`);
-    }
-  }
-}
-
-// ============================================================
-// 2. command files referencing skills (in body text)
+// 1. command files referencing skills (in body text)
 // ============================================================
 
 for (const cmd of commands) {
@@ -134,7 +116,7 @@ for (const cmd of commands) {
 }
 
 // ============================================================
-// 3. skill files referencing related skills
+// 2. skill files referencing related skills
 // ============================================================
 
 for (const skill of skills) {
@@ -160,7 +142,7 @@ for (const skill of skills) {
 }
 
 // ============================================================
-// 4. skills not referenced by any command, agent, hook, or other skill (orphans)
+// 3. skills not referenced by any command, agent, hook, or other skill (orphans)
 // ============================================================
 
 // build the full corpus of references
@@ -194,14 +176,14 @@ for (const skill of skills) {
 }
 
 // ============================================================
-// 5. command name doesn't match a skill (informational)
+// 4. command name doesn't match a skill (informational)
 // ============================================================
 
 // not all commands map 1:1 to a skill (some wrap multiple, e.g. /name -> naming-generation)
 // this is informational only
 
 // ============================================================
-// 6. agent files mentioning skills that don't exist
+// 5. agent files mentioning skills that don't exist
 // ============================================================
 
 for (const agent of agents) {
@@ -218,7 +200,7 @@ for (const agent of agents) {
 }
 
 // ============================================================
-// 7. memory references in hooks
+// 6. memory references in hooks
 // ============================================================
 
 const memoryRefs = ['memory/instincts.md', 'memory/lessons.md', 'memory/glossary.md'];

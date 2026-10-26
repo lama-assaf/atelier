@@ -12,7 +12,7 @@ atelier/
 ├── skills/           33 skills across design, product, brand
 ├── commands/         32 slash commands
 ├── rules/            23 rules across 5 lanes
-├── hooks/            working claude code hooks (pre-write, post-write, prompt-context)
+├── hooks/            working claude code hooks (pre-write, post-write, session-context)
 ├── mcp-configs/      figma, notion, linear, posthog, filesystem (opt-in via /atelier:mcp-setup)
 ├── memory/           seed templates for per-project memory (.atelier/memory/)
 ├── adapters/         cursor, codex, opencode, gemini, zed, vscode
@@ -81,7 +81,7 @@ memory & setup: `/memory-init`, `/remember`, `/mcp-setup`
 
 ### hooks (3)
 
-`pre-write` flags ai-tone and rhythm flatness before writes. `post-write` logs every write. `prompt-context` surfaces relevant skills based on prompt keywords and logs each activation. all non-blocking by default. set `ATELIER_HOOK_STRICT=1` to block on flags.
+`pre-write` flags ai-tone and rhythm flatness before writes. `post-write` logs every write. `session-context` injects the project's instincts once per session. all non-blocking by default. set `ATELIER_HOOK_STRICT=1` to block on flags.
 
 ### rules (23)
 
@@ -140,7 +140,7 @@ each project gets its own memory in `<project>/.atelier/memory/` (instincts, les
 
 - `/atelier:memory-init` seeds it from the templates in this repo's `memory/` dir
 - `/atelier:remember <note>` appends a dated lesson; `--instinct` adds a standing rule
-- the prompt-context hook injects the current project's `instincts.md` automatically (this repo's `memory/instincts.md` is only the seed/fallback)
+- the session-context hook injects the current project's `instincts.md` at session start (this repo's `memory/instincts.md` is only the seed/fallback)
 
 memory is committed by default so the team shares it; gitignore `.atelier/` for machine-local memory. see `memory/README.md`.
 
@@ -170,7 +170,7 @@ windows:
 npm test
 ```
 
-validates: JSON parsing, agent/skill/command frontmatter, hook execution on edge cases, adapter install scripts, cross-references, dashboard build, log-viewer cli, unit tests on the banned-word and rhythm checkers, and an end-to-end suite for per-project memory resolution (spawns the real prompt-context hook). ~358 checks across `tests/run-all.js` and `tests/memory-resolution.test.js`.
+validates: JSON parsing, agent/skill/command frontmatter, hook execution on edge cases, adapter install scripts, cross-references, dashboard build, log-viewer cli, unit tests on the banned-word and rhythm checkers, and an end-to-end suite for per-project memory resolution (spawns the real session-context hook). ~315 checks across `tests/run-all.js` and `tests/memory-resolution.test.js`.
 
 ## license
 

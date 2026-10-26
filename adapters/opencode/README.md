@@ -19,7 +19,7 @@ opencode uses `opencode.json` for configuration and supports custom commands, cu
 ## limitations
 
 - opencode's agent format differs from claude code's; the adapter strips claude-specific fields (model = opus) and lets opencode choose its default
-- no equivalent to UserPromptSubmit hooks; the prompt-context hook has no port
+- no equivalent to SessionStart hooks; the session-context hook has no port
 - pre-write validation could be approximated with a custom mode that asks opencode to self-check, but this isn't automatic
 
 ## uninstall

@@ -1,11 +1,11 @@
 {
   "hooks": {
-    "UserPromptSubmit": [
+    "SessionStart": [
       {
         "hooks": [
           {
             "type": "command",
-            "command": "node ${CLAUDE_PLUGIN_ROOT}/scripts/hooks/prompt-context.js"
+            "command": "node ${CLAUDE_PLUGIN_ROOT}/scripts/hooks/session-context.js"
           }
         ]
       }

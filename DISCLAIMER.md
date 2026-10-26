@@ -65,7 +65,7 @@ agents, skills, and rules may reference public concepts, frameworks, or conventi
 
 atelier ships configuration files, install scripts, hook scripts, dashboard scripts, and mcp configs. **audit them before running on a machine you care about.** the author is not responsible for changes installers, hooks, or dashboard scripts make to your local environment, harness configuration, shell, or filesystem.
 
-the `prompt-context.js` hook reads your prompts. the `post-write.js` hook writes log files under `~/.claude/atelier/logs/`. the dashboard build and log-viewer scripts read those logs and emit static html. adapter install scripts copy or symlink files into other harnesses' config directories. understand these effects before enabling them.
+the `session-context.js` hook reads your project's `.atelier/memory/instincts.md` at session start. the `post-write.js` hook writes log files under `~/.claude/atelier/logs/`. the dashboard build and log-viewer scripts read those logs and emit static html. adapter install scripts copy or symlink files into other harnesses' config directories. understand these effects before enabling them.
 
 do not feed secrets, credentials, customer data, or other confidential information into agents, skills, hooks, dashboard scripts, or any connected mcp servers unless you have independently verified that your harness, model provider, and the relevant mcp servers handle that data appropriately for your threat model.
 

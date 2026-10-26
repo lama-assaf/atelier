@@ -228,7 +228,7 @@ for (const rf of ruleFiles) {
 section('hooks');
 
 const HOOKS_DIR = path.join(ROOT, 'scripts/hooks');
-for (const hookFile of ['pre-write.js', 'post-write.js', 'prompt-context.js']) {
+for (const hookFile of ['pre-write.js', 'post-write.js', 'session-context.js']) {
   const p = path.join(HOOKS_DIR, hookFile);
   if (!fs.existsSync(p)) {
     err(`hook ${hookFile} exists`, 'not found');
@@ -316,28 +316,33 @@ for (const hookFile of ['pre-write.js', 'post-write.js', 'prompt-context.js']) {
   }
 }
 
-// run prompt-context with a keyword
+// session-context with no edited instincts: silent (the seed copy is still the template)
 {
-  const input = JSON.stringify({ prompt: 'help me write a prd' });
-  const r = spawnSync('node', [path.join(HOOKS_DIR, 'prompt-context.js')], {
-    input,
+  const proj = fs.mkdtempSync(path.join(require('os').tmpdir(), 'atelier-session-'));
+  const r = spawnSync('node', [path.join(HOOKS_DIR, 'session-context.js')], {
+    input: JSON.stringify({ hook_event_name: 'SessionStart', source: 'startup', cwd: proj }),
     encoding: 'utf-8',
     env: { ...process.env, ATELIER_ROOT: ROOT },
   });
-  if (r.status === 0 && r.stdout.includes('prd-writing')) ok('prompt-context: surfaces prd skill');
-  else err('prompt-context prd', `status=${r.status}, stdout=${r.stdout.slice(0,200)}`);
+  if (r.status === 0 && r.stdout.length === 0) ok('session-context: silent without edited instincts');
+  else err('session-context silent', `status=${r.status}, stdout=${r.stdout.slice(0,100)}`);
 }
 
-// prompt-context with no match
+// session-context injects project instincts as SessionStart context
 {
-  const input = JSON.stringify({ prompt: 'random unrelated question about cooking' });
-  const r = spawnSync('node', [path.join(HOOKS_DIR, 'prompt-context.js')], {
-    input,
+  const proj = fs.mkdtempSync(path.join(require('os').tmpdir(), 'atelier-session-'));
+  fs.mkdirSync(path.join(proj, '.atelier', 'memory'), { recursive: true });
+  fs.writeFileSync(path.join(proj, '.atelier', 'memory', 'instincts.md'), '- session-marker-abc\n');
+  const r = spawnSync('node', [path.join(HOOKS_DIR, 'session-context.js')], {
+    input: JSON.stringify({ hook_event_name: 'SessionStart', source: 'startup', cwd: proj }),
     encoding: 'utf-8',
     env: { ...process.env, ATELIER_ROOT: ROOT },
   });
-  if (r.status === 0 && r.stdout.length === 0) ok('prompt-context: silent on no match');
-  else err('prompt-context no match', `status=${r.status}, stdout=${r.stdout.slice(0,100)}`);
+  let out = null;
+  try { out = JSON.parse(r.stdout); } catch (e) { /* reported below */ }
+  if (r.status === 0 && out && out.hookSpecificOutput.hookEventName === 'SessionStart'
+      && out.hookSpecificOutput.additionalContext.includes('session-marker-abc')) ok('session-context: injects project instincts');
+  else err('session-context instincts', `status=${r.status}, stdout=${r.stdout.slice(0,200)}`);
 }
 
 // ============================================================
@@ -392,30 +397,7 @@ for (const inst of ['install.sh', 'install.ps1']) {
 }
 
 // ============================================================
-// 10. cross-reference checks
-// ============================================================
-section('cross-references');
-
-// every skill referenced in prompt-context KEYWORDS map should exist
-const promptContextSrc = fs.readFileSync(path.join(HOOKS_DIR, 'prompt-context.js'), 'utf-8');
-const referencedSkills = [...promptContextSrc.matchAll(/'(skills\/[a-z-]+\/SKILL\.md)'/g)].map((m) => m[1]);
-const uniqueRefs = [...new Set(referencedSkills)];
-for (const r of uniqueRefs) {
-  const full = path.join(ROOT, r);
-  if (fs.existsSync(full)) ok(`prompt-context ref: ${r}`);
-  else err(`prompt-context ref ${r}`, 'skill file does not exist');
-}
-
-// every rule referenced should exist
-const referencedRules = [...promptContextSrc.matchAll(/'(rules\/[a-z\/-]+\.md)'/g)].map((m) => m[1]);
-for (const r of [...new Set(referencedRules)]) {
-  const full = path.join(ROOT, r);
-  if (fs.existsSync(full)) ok(`prompt-context ref: ${r}`);
-  else err(`prompt-context ref ${r}`, 'rule file does not exist');
-}
-
-// ============================================================
-// 11. checks.js unit tests
+// 10. checks.js unit tests
 // ============================================================
 section('checks.js unit tests');
 
@@ -485,7 +467,7 @@ const { findBannedTone, checkRhythm, scanText, checkEmDashFiller } = require(pat
 }
 
 // ============================================================
-// 12. README + ATELIER.md + SOUL.md substantive
+// 11. README + ATELIER.md + SOUL.md substantive
 // ============================================================
 section('docs');
 
@@ -501,7 +483,7 @@ for (const doc of ['README.md', 'ATELIER.md', 'SOUL.md', 'DISCLAIMER.md', 'LICEN
 }
 
 // ============================================================
-// 13. reference integrity (drift guard)
+// 12. reference integrity (drift guard)
 // ============================================================
 section('reference integrity');
 
@@ -515,7 +497,7 @@ section('reference integrity');
 }
 
 // ============================================================
-// 14. dashboard build runs cleanly
+// 13. dashboard build runs cleanly
 // ============================================================
 section('dashboard build');
 
@@ -551,7 +533,7 @@ section('dashboard build');
 }
 
 // ============================================================
-// 15. log-viewer runs cleanly
+// 14. log-viewer runs cleanly
 // ============================================================
 section('log viewer');
 
@@ -578,7 +560,7 @@ section('log viewer');
 }
 
 // ============================================================
-// 16. safety-guard: DYOR + contributor metadata didn't regress
+// 15. safety-guard: DYOR + contributor metadata didn't regress
 // ============================================================
 section('safety guard');
 

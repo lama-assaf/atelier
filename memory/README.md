@@ -11,9 +11,9 @@ atelier memory is **per-project**. each project you work in gets its own
 
 ## how it gets used
 
-the prompt-context hook (scripts/hooks/prompt-context.js) resolves the current
+the session-context hook (scripts/hooks/session-context.js) resolves the current
 project from the hook's `cwd` and injects that project's `instincts.md` as
-context. if the project has no memory directory, the seed `instincts.md` in
+context once per session. if the project has no memory directory, the seed `instincts.md` in
 this folder is used as a fallback (and skipped while it still contains only
 template examples).
 
