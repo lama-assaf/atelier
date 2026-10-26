@@ -28,7 +28,7 @@
         "source": "git-subdir",
         "url": "lama-assaf/creative-genius",
         "path": "plugins/craft",
-        "ref": "v3.0.0"
+        "ref": "v3.0.1"
       },
       "description": "interface craft for real ui code: audit, fix and polish layout, color, type, motion and accessibility, export design tokens, plus the autointerface and autonegotiate pipelines (from creative-genius)"
     },
@@ -38,7 +38,7 @@
         "source": "git-subdir",
         "url": "lama-assaf/creative-genius",
         "path": "plugins/brand",
-        "ref": "v3.0.0"
+        "ref": "v3.0.1"
       },
       "description": "brand as a system agents can read: brand genome, soul file, red lines, visual identity, narrative and drift tracking, plus the autobrand pipeline (from creative-genius)"
     },
@@ -48,7 +48,7 @@
         "source": "git-subdir",
         "url": "lama-assaf/creative-genius",
         "path": "plugins/taste",
-        "ref": "v3.0.0"
+        "ref": "v3.0.1"
       },
       "description": "design taste: capture a taste profile, review work against a taste rubric, set an aesthetic direction, and run the autotaste learning loop (from creative-genius)"
     }
