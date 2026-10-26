@@ -2,6 +2,15 @@
 
 # changelog
 
+## atelier 0.2.0
+
+### changed
+
+- **session-context replaces prompt-context.** the UserPromptSubmit hook re-sent `instincts.md` with every prompt and pasted whole skill files (up to six, 6,000 chars each) whenever a keyword appeared anywhere in the prompt. its own activation log showed 1,537 activations in 44 days, led by false positives: "experiment" (502, matching folder paths), "spec" (453, matching "specific" and "inspect"), "scope" (261). claude code already loads skills on demand from their descriptions. the new SessionStart hook injects instincts once per session and after `/clear` or compaction, and never reads prompts.
+- removed the keyword-map checks from `tests/run-all.js` and `scripts/util/check-references.js`.
+- marketplace lists craft, brand and taste from creative-genius v3.0.0 via `git-subdir`.
+
+
 ## 0.3.0 — session 3
 
 ### added

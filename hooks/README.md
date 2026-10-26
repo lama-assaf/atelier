@@ -4,13 +4,15 @@ three claude code hooks ship with atelier. all are non-blocking by default.
 
 ## what each does
 
-### prompt-context.js (UserPromptSubmit)
+### session-context.js (SessionStart)
 
-inspects the user's prompt for atelier-relevant keywords and surfaces the matching skill/rule files as additional context to the model. matches things like "design review", "prd", "brand voice", "naming", "a11y".
+injects the current project's `.atelier/memory/instincts.md` once when a session starts, and again after `/clear` or compaction. falls back to the seed `memory/instincts.md` only once it has been edited.
 
-- silent when no keywords match
-- silent when too many match (over 6, signals noisy prompt)
-- truncates large files at ~6000 chars per reference
+- silent when there are no edited instincts
+- truncates at ~6000 chars
+- never reads your prompts
+
+replaced `prompt-context.js` (UserPromptSubmit) in 0.2.0. that hook re-sent instincts with every prompt and pasted whole skill files on keyword matches; claude code already loads skills on demand from their descriptions, and the substring matcher fired mostly on false positives ("spec" inside "specific", "experiment" inside a folder path).
 
 ### pre-write.js (PreToolUse on Write/Edit)
 
