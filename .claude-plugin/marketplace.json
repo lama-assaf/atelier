@@ -58,9 +58,9 @@
         "source": "git-subdir",
         "url": "https://github.com/lama-assaf/animation-club.git",
         "path": "plugins/motion",
-        "ref": "v0.1.4"
+        "ref": "v0.1.5"
       },
-      "description": "on-brand motion videos: launches, walkthroughs, before-and-afters and story clips, written as html and rendered to mp4, with the brand read from the project's kit (from animation-club)"
+      "description": "on-brand motion videos and static feed cards: launches, walkthroughs, before-and-afters, story clips and sticker cards, written as html and rendered to mp4 or png, posted to instagram through composio, with the brand read from the project's kit (from animation-club)"
     }
   ]
 }
