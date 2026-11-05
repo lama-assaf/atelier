@@ -51,6 +51,16 @@
         "ref": "v3.0.1"
       },
       "description": "design taste: capture a taste profile, review work against a taste rubric, set an aesthetic direction, and run the autotaste learning loop (from creative-genius)"
+    },
+    {
+      "name": "motion",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/lama-assaf/animation-club.git",
+        "path": "plugins/motion",
+        "ref": "v0.1.4"
+      },
+      "description": "on-brand motion videos: launches, walkthroughs, before-and-afters and story clips, written as html and rendered to mp4, with the brand read from the project's kit (from animation-club)"
     }
   ]
 }

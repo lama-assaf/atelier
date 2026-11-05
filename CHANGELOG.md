@@ -2,6 +2,12 @@
 
 # changelog
 
+## unreleased
+
+### added
+
+- marketplace lists `motion` from animation-club v0.1.4 via `git-subdir`: on-brand motion videos (`/motion:video`, `/motion:render`, `/motion:direct` and nine more). animation-club is a private repo, so installing it needs read access to it. it adds 12 skills to the listing.
+
 ## atelier 0.3.0
 
 ### changed
